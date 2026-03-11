@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bungee&display=swap');
 /* Body */
 body {
     font-family: Arial, sans-serif;
@@ -134,7 +135,4 @@ main {
     font-family: "Bungee", sans-serif;
     font-weight: 400;
     font-style: normal;
-    color: white; /* бяло */
-    font-size: 36px;
-    margin: 0;
-}
+  }
