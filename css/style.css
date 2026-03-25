@@ -1,9 +1,9 @@
 /* Body */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    background-color: #121212;
-    color: #e4e4e4;
+    background-color: #ffffff; /* бял фон за цялата страница */
+    color: #333333; /* тъмен текст за контраст */
 }
 
 /* Header */
@@ -12,7 +12,9 @@ header {
     justify-content: space-between; 
     align-items: center;           
     padding: 20px 40px;
-    background-color: #222; 
+    background-color: #ffffff; /* бял фон за header */
+    color: #333333;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 header nav ul {
@@ -26,7 +28,7 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: white;
+    color: #333333; /* тъмен текст за навигация */
     text-decoration: none;
     font-size: 18px;
     padding: 5px 10px;
@@ -34,26 +36,31 @@ header nav ul li a {
 
 header nav ul li a.active,
 header nav ul li a:hover {
-    background-color: #8c52ff;
+    background-color: #8c52ff; /* лилаво за hover/активно меню */
+    color: #ffffff; 
     border-radius: 5px;
 }
 
-/* Hero Section */
+/* Hero Section с градиент */
 .hero {
     text-align: center;
     padding: 80px 20px;
-    background: linear-gradient(90deg, #8c52ff, #5170ff);
-    color: white;
+    background: linear-gradient(90deg, #8c52ff, #5170ff); /* лилаво към синьо */
+    color: white; /* текстът в hero секцията остава бял за контраст */
 }
 
 .hero .btn {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
-    color: #00bfff;
-    background-color: white;
+    color: #ffffff;
+    background-color: #8c52ff; /* primary бутон */
     text-decoration: none;
     border-radius: 5px;
+}
+
+.hero .btn:hover {
+    background-color: #5170ff; /* hover ефект бутон */
 }
 
 /* Features */
@@ -70,18 +77,22 @@ header nav ul li a:hover {
 }
 
 .feature {
-    background-color: #1e1e1e;
+    background-color: #f5f5f5; /* светло сив фон за картите */
     padding: 20px;
     width: 250px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
+
 /* Footer */
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #111;
+    background-color: #ffffff; /* бял фон за footer */
+    color: #333333;
+    border-top: 1px solid #ddd;
 }
+
 /* Responsive */
 @media (max-width: 768px) {
     header {
@@ -105,36 +116,42 @@ footer {
         font-size: 16px;
     }
 }
+
 main {
     max-width: 1100px;
     margin: auto;
 }
+
 .feature:hover {
     transform: scale(1.05);
     transition: 0.3s;
 }
+
 .logo {
     height: 90px; 
     vertical-align: middle;
     margin-right: 15px;
 }
+
 .logo-container {
     display: flex;
     align-items: center;
     gap: 15px;    
 }
+
 .logo-container h1 {
-    color: white;         
+    color: #333333;         
     font-family: 'Roboto', sans-serif; 
     font-size: 36px;
     margin: 0;
     font-weight: 700;
 }
+
 .bungee-regular {
     font-family: "Bungee", sans-serif;
     font-weight: 400;
     font-style: normal;
-    color: white; /* бяло */
+    color: #333333; /* заглавие в header остава тъмен */
     font-size: 36px;
     margin: 0;
 }
