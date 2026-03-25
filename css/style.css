@@ -128,9 +128,14 @@ main {
 }
 
 .logo {
-    height: 90px; 
+    height: 105px; 
     vertical-align: middle;
     margin-right: 15px;
+    transition: transform 0.2s ease-in-out; /* плавен преход */
+}
+
+.logo:hover {
+    animation: swing 1s ease-in-out infinite; /* завърта се наляво-надясно */
 }
 
 .logo-container {
@@ -147,11 +152,16 @@ main {
     font-weight: 700;
 }
 
+@keyframes swing {
+    0% { transform: rotate(-15deg); }
+    50% { transform: rotate(15deg); }
+    100% { transform: rotate(-15deg); }
+}
 .bungee-regular {
-    font-family: "Bungee", sans-serif;
+    font-family: 'Bungee', cursive; /* шрифт Bungee */
     font-weight: 400;
     font-style: normal;
-    color: #333333; /* заглавие в header остава тъмен */
-    font-size: 36px;
+    color: #333333; /* тъмен текст за бял фон */
+    font-size: 36px; /* размер на заглавието */
     margin: 0;
 }
