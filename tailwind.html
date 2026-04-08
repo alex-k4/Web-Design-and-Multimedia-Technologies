@@ -18,7 +18,18 @@
                 <li><a href="index.html" class="text-purple-700 font-semibold">Home</a></li>
             </ul>
         </nav>
+        <div class="cart-container ml-4 relative">
+            <button id="cart-button" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">
+                Кошница 🛒 (<span id="cart-count">0</span>)
+            </button>
+        </div>
     </header>
+    <!-- Кошница -->
+<div id="cart-window" class="hidden fixed top-20 right-5 w-80 bg-white shadow-lg p-4 rounded z-50">
+    <h3 class="text-lg font-bold mb-3">Кошница</h3>
+    <div id="cart-items" class="mb-3"></div>
+    <button onclick="checkout()" class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 w-full">Поръчай</button>
+</div>
 
     <main class="max-w-6xl mx-auto my-10 px-5">
         <h2 class="text-4xl text-center mb-6">Готови модели на настолни игри</h2>
@@ -34,7 +45,7 @@
                 <input id="quantity1" type="number" min="1" value="1" class="border p-1 w-20 mb-2">
                 <div class="flex gap-2">
                     <button onclick="addToCart('Класически игри- тип карта', 30, document.getElementById('quantity1').value)" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Добави в кошницата</button>
-                    <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Питай разработчика</button>
+                    <button onclick="openChat('Игра 1')" class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Персонализирай</button>
                 </div>
             </div>
         
@@ -47,7 +58,7 @@
                 <input id="quantity2" type="number" min="1" value="1" class="border p-1 w-20 mb-2">
                 <div class="flex gap-2">
                     <button onclick="addToCart('Мистериозни', 40, document.getElementById('quantity2').value)" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Добави в кошницата</button>
-                    <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Питай разработчика</button>
+                    <button onclick="openChat('Игра 1')" class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Персонализирай</button>
                 </div>
             </div>
         
@@ -60,7 +71,7 @@
                 <input id="quantity3" type="number" min="1" value="1" class="border p-1 w-20 mb-2">
                 <div class="flex gap-2">
                     <button onclick="addToCart('Игри с персонализирани карти', 45, document.getElementById('quantity3').value)" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Добави в кошницата</button>
-                    <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Питай разработчика</button>
+                    <button onclick="openChat('Игра 1')" class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Персонализирай</button>
                 </div>
             </div>
         
@@ -73,7 +84,7 @@
                 <input id="quantity4" type="number" min="1" value="1" class="border p-1 w-20 mb-2">
                 <div class="flex gap-2">
                     <button onclick="addToCart('Игра- тип карта', 50, document.getElementById('quantity4').value)" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Добави в кошницата</button>
-                    <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Питай разработчика</button>
+                    <button onclick="openChat('Игра 1')" class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Персонализирай</button>
                 </div>
             </div>
         
@@ -86,7 +97,7 @@
                 <input id="quantity5" type="number" min="1" value="1" class="border p-1 w-20 mb-2">
                 <div class="flex gap-2">
                     <button onclick="addToCart('Образователни', 15, document.getElementById('quantity5').value)" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Добави в кошницата</button>
-                    <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Питай разработчика</button>
+                    <button onclick="openChat('Игра 1')" class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Персонализирай</button>
                 </div>
             </div>
         
@@ -99,7 +110,7 @@
                 <input id="quantity6" type="number" min="1" value="1" class="border p-1 w-20 mb-2">
                 <div class="flex gap-2">
                     <button onclick="addToCart('Игра тип Домино', 20, document.getElementById('quantity6').value)" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Добави в кошницата</button>
-                    <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Питай разработчика</button>
+                    <button onclick="openChat('Игра 1')" class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Персонализирай</button>
                 </div>
             </div>
         
@@ -112,7 +123,7 @@
                 <input id="quantity7" type="number" min="1" value="1" class="border p-1 w-20 mb-2">
                 <div class="flex gap-2">
                     <button onclick="addToCart('Играй и познай', 25, document.getElementById('quantity7').value)" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Добави в кошницата</button>
-                    <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Питай разработчика</button>
+                    <button onclick="openChat('Игра 1')" class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Персонализирай</button>
                 </div>
             </div>
         
@@ -125,7 +136,7 @@
                 <input id="quantity8" type="number" min="1" value="1" class="border p-1 w-20 mb-2">
                 <div class="flex gap-2">
                     <button onclick="addToCart('История', 30, document.getElementById('quantity8').value)" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Добави в кошницата</button>
-                    <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Питай разработчика</button>
+                    <button onclick="openChat('Игра 1')" class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Персонализирай</button>
                 </div>
             </div>
         
@@ -138,7 +149,7 @@
                 <input id="quantity9" type="number" min="1" value="1" class="border p-1 w-20 mb-2">
                 <div class="flex gap-2">
                     <button onclick="addToCart('Игра- тип Завладей', 45, document.getElementById('quantity9').value)" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Добави в кошницата</button>
-                    <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Питай разработчика</button>
+                    <button onclick="openChat('Игра 1')" class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Персонализирай</button>
                 </div>
             </div>
         </div>
@@ -147,5 +158,11 @@
     <footer class="text-center py-5 border-t">
         &copy; 2026 Game Forge
     </footer>
+    <script>
+        function openChat(gameName) {
+            alert(`Чат с екипа за персонализация на ${gameName}`);
+            // По-късно можеш да сложиш iframe за истински чат
+        }
+        </script>
 </body>
 </html>

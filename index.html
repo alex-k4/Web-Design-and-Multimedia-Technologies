@@ -22,7 +22,18 @@
                 <li><a href="contacts.html">Contacts</a></li>
             </ul>
         </nav>
+        <div class="cart-container ml-4 relative">
+            <button id="cart-button" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">
+                Кошница 🛒 (<span id="cart-count">0</span>)
+            </button>
+        </div>
     </header>
+    <!-- Кошница -->
+<div id="cart-window" class="hidden fixed top-20 right-5 w-80 bg-white shadow-lg p-4 rounded z-50">
+    <h3 class="text-lg font-bold mb-3">Кошница</h3>
+    <div id="cart-items" class="mb-3"></div>
+    <button onclick="checkout()" class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 w-full">Поръчай</button>
+</div>
 
     <main>
         <section class="hero">
