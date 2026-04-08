@@ -22,20 +22,124 @@
 
     <main class="max-w-6xl mx-auto my-10 px-5">
         <h2 class="text-4xl text-center mb-6">Готови модели на настолни игри</h2>
-        <p class="text-center mb-10">Разгледайте нашите предложения, които можете да персонализирате с Tailwind.</p>
+        <p class="text-center mb-10">Разгледайте нашите предложения, които можете да използвате като основа и да персонализирате с нашия екип.</p>
 
-        <div class="grid md:grid-cols-3 gap-6">
+        <div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
+            <!-- Game 1 -->
             <div class="bg-gray-100 p-5 rounded shadow hover:scale-105 transition">
-                <h3 class="text-xl font-bold mb-2">Игра 1</h3>
-                <p>Описание на игра 1</p>
+                <img src="images/game1.png" alt="Игра 1" class="w-full h-48 object-cover mb-3 rounded">
+                <h3 class="text-xl font-bold mb-1">Класически игри- тип карта</h3>
+                <p class="mb-1">Цена: 30 €.</p>
+                <label for="quantity1" class="block mb-1">Количество:</label>
+                <input id="quantity1" type="number" min="1" value="1" class="border p-1 w-20 mb-2">
+                <div class="flex gap-2">
+                    <button onclick="addToCart('Класически игри- тип карта', 30, document.getElementById('quantity1').value)" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Добави в кошницата</button>
+                    <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Питай разработчика</button>
+                </div>
             </div>
+        
+            <!-- Game 2 -->
             <div class="bg-gray-100 p-5 rounded shadow hover:scale-105 transition">
-                <h3 class="text-xl font-bold mb-2">Игра 2</h3>
-                <p>Описание на игра 2</p>
+                <img src="images/game2.png" alt="Игра 2" class="w-full h-48 object-cover mb-3 rounded">
+                <h3 class="text-xl font-bold mb-1">Мистериозни</h3>
+                <p class="mb-1">Цена: 40 €.</p>
+                <label for="quantity2" class="block mb-1">Количество:</label>
+                <input id="quantity2" type="number" min="1" value="1" class="border p-1 w-20 mb-2">
+                <div class="flex gap-2">
+                    <button onclick="addToCart('Мистериозни', 40, document.getElementById('quantity2').value)" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Добави в кошницата</button>
+                    <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Питай разработчика</button>
+                </div>
             </div>
+        
+            <!-- Game 3 -->
             <div class="bg-gray-100 p-5 rounded shadow hover:scale-105 transition">
-                <h3 class="text-xl font-bold mb-2">Игра 3</h3>
-                <p>Описание на игра 3</p>
+                <img src="images/game3.png" alt="Игра 3" class="w-full h-48 object-cover mb-3 rounded">
+                <h3 class="text-xl font-bold mb-1">Игри с персонализирани карти</h3>
+                <p class="mb-1">Цена: 25 €.</p>
+                <label for="quantity3" class="block mb-1">Количество:</label>
+                <input id="quantity3" type="number" min="1" value="1" class="border p-1 w-20 mb-2">
+                <div class="flex gap-2">
+                    <button onclick="addToCart('Игри с персонализирани карти', 45, document.getElementById('quantity3').value)" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Добави в кошницата</button>
+                    <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Питай разработчика</button>
+                </div>
+            </div>
+        
+            <!-- Game 4 -->
+            <div class="bg-gray-100 p-5 rounded shadow hover:scale-105 transition">
+                <img src="images/game4.png" alt="Игра 4" class="w-full h-48 object-cover mb-3 rounded">
+                <h3 class="text-xl font-bold mb-1">Игра- тип карта</h3>
+                <p class="mb-1">Цена: 50 €.</p>
+                <label for="quantity4" class="block mb-1">Количество:</label>
+                <input id="quantity4" type="number" min="1" value="1" class="border p-1 w-20 mb-2">
+                <div class="flex gap-2">
+                    <button onclick="addToCart('Игра- тип карта', 50, document.getElementById('quantity4').value)" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Добави в кошницата</button>
+                    <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Питай разработчика</button>
+                </div>
+            </div>
+        
+            <!-- Game 5 -->
+            <div class="bg-gray-100 p-5 rounded shadow hover:scale-105 transition">
+                <img src="images/game5.png" alt="Игра 5" class="w-full h-48 object-cover mb-3 rounded">
+                <h3 class="text-xl font-bold mb-1">Образователни</h3>
+                <p class="mb-1">Цена: 15 €.</p>
+                <label for="quantity5" class="block mb-1">Количество:</label>
+                <input id="quantity5" type="number" min="1" value="1" class="border p-1 w-20 mb-2">
+                <div class="flex gap-2">
+                    <button onclick="addToCart('Образователни', 15, document.getElementById('quantity5').value)" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Добави в кошницата</button>
+                    <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Питай разработчика</button>
+                </div>
+            </div>
+        
+            <!-- Game 6 -->
+            <div class="bg-gray-100 p-5 rounded shadow hover:scale-105 transition">
+                <img src="images/game6.png" alt="Игра 6" class="w-full h-48 object-cover mb-3 rounded">
+                <h3 class="text-xl font-bold mb-1">Игра- тип Домино</h3>
+                <p class="mb-1">Цена: 20 €.</p>
+                <label for="quantity6" class="block mb-1">Количество:</label>
+                <input id="quantity6" type="number" min="1" value="1" class="border p-1 w-20 mb-2">
+                <div class="flex gap-2">
+                    <button onclick="addToCart('Игра тип Домино', 20, document.getElementById('quantity6').value)" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Добави в кошницата</button>
+                    <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Питай разработчика</button>
+                </div>
+            </div>
+        
+            <!-- Game 7 -->
+            <div class="bg-gray-100 p-5 rounded shadow hover:scale-105 transition">
+                <img src="images/game7.png" alt="Игра 7" class="w-full h-48 object-cover mb-3 rounded">
+                <h3 class="text-xl font-bold mb-1">Играй и познай</h3>
+                <p class="mb-1">Цена: 25 €.</p>
+                <label for="quantity7" class="block mb-1">Количество:</label>
+                <input id="quantity7" type="number" min="1" value="1" class="border p-1 w-20 mb-2">
+                <div class="flex gap-2">
+                    <button onclick="addToCart('Играй и познай', 25, document.getElementById('quantity7').value)" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Добави в кошницата</button>
+                    <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Питай разработчика</button>
+                </div>
+            </div>
+        
+            <!-- Game 8 -->
+            <div class="bg-gray-100 p-5 rounded shadow hover:scale-105 transition">
+                <img src="images/game8.png" alt="Игра 8" class="w-full h-48 object-cover mb-3 rounded">
+                <h3 class="text-xl font-bold mb-1">История</h3>
+                <p class="mb-1">Цена: 30 €.</p>
+                <label for="quantity8" class="block mb-1">Количество:</label>
+                <input id="quantity8" type="number" min="1" value="1" class="border p-1 w-20 mb-2">
+                <div class="flex gap-2">
+                    <button onclick="addToCart('История', 30, document.getElementById('quantity8').value)" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Добави в кошницата</button>
+                    <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Питай разработчика</button>
+                </div>
+            </div>
+        
+            <!-- Game 9 -->
+            <div class="bg-gray-100 p-5 rounded shadow hover:scale-105 transition">
+                <img src="images/game9.png" alt="Игра 9" class="w-full h-48 object-cover mb-3 rounded">
+                <h3 class="text-xl font-bold mb-1">Игра- тип Завладей</h3>
+                <p class="mb-1">Цена: 45 €.</p>
+                <label for="quantity9" class="block mb-1">Количество:</label>
+                <input id="quantity9" type="number" min="1" value="1" class="border p-1 w-20 mb-2">
+                <div class="flex gap-2">
+                    <button onclick="addToCart('Игра- тип Завладей', 45, document.getElementById('quantity9').value)" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Добави в кошницата</button>
+                    <button class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Питай разработчика</button>
+                </div>
             </div>
         </div>
     </main>
