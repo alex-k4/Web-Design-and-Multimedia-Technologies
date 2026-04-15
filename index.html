@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <title>Game Forge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-
-    <title>Game Forge - Home</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
@@ -18,29 +15,30 @@
 
 <body>
 
-<!-- HEADER -->
 <header>
+    <!-- LEFT: LOGO -->
     <div class="logo-container">
-
-        <img src="images/logo.png" alt="Game Forge Logo" class="logo">
-
+        <img src="images/logo.png" class="logo">
         <h1 class="bungee-regular">Game Forge</h1>
+    </div>
 
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contacts.html">Contacts</a></li>
-            </ul>
-        </nav>
+    <!-- RIGHT: MENU -->
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contacts.html">Contacts</a></li>
+            <li><a href="bootstrap.html">Create Game</a></li>
+            <li><a href="tailwind.html">Models</a></li>
+        </ul>
+    </nav>
 
-        <!-- CART -->
-        <div class="cart-container">
-            <button id="cart-button" class="cart-btn">
-                Кошница 🛒 (<span id="cart-count">0</span>)
-            </button>
-        </div>
-
+    <!-- CART -->
+    <div class="cart-container">
+        <button id="cart-button">
+            <img src="images/icon_basket.gif" class="cart-icon" alt="Cart">
+            Кошница (<span id="cart-count">0</span>)
+        </button>
     </div>
 </header>
 
@@ -48,50 +46,39 @@
 <div id="cart-window" class="hidden">
     <h3>Кошница</h3>
     <div id="cart-items"></div>
-    <button onclick="checkout()" class="btn">Поръчай</button>
+    <button onclick="checkout()">Поръчай</button>
 </div>
 
 <!-- HERO -->
 <section class="hero">
-
     <div class="hero-overlay">
-
-        <h2>Create. Customize. Conquer.</h2>
-
-        <p>Forge your own dark fantasy board game universe</p>
-
-        <a href="bootstrap.html" class="btn">
-            Start Crafting
-        </a>
-
+        <h2>Forge Your Board Game Universe</h2>
+        <p>Design, customize and create your own tabletop games</p>
+        <a href="bootstrap.html" class="btn">Start Crafting</a>
     </div>
-
 </section>
 
 <!-- FEATURES -->
 <section class="features">
-
     <h2>Our Services</h2>
 
     <div class="feature-grid">
 
         <div class="feature">
-            <h3>Създай игра</h3>
-            <p>Персонализирай всяка част от твоята настолна игра.</p>
-            <a href="bootstrap.html" class="btn-secondary">Започни</a>
+            <h3>Create Game</h3>
+            <p>Build your own custom board game from scratch.</p>
+            <a href="bootstrap.html" class="btn-secondary">Start</a>
         </div>
 
         <div class="feature">
-            <h3>Готови модели</h3>
-            <p>Разгледай готови шаблони и ги направи свои.</p>
-            <a href="tailwind.html" class="btn-secondary">Разгледай</a>
+            <h3>Game Models</h3>
+            <p>Browse ready-made templates and ideas.</p>
+            <a href="tailwind.html" class="btn-secondary">Explore</a>
         </div>
 
     </div>
-
 </section>
 
-<!-- FOOTER -->
 <footer>
     <p>&copy; 2026 Game Forge. All rights reserved.</p>
 </footer>

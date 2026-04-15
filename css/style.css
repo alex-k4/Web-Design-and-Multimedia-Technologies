@@ -43,13 +43,15 @@ header nav ul li a.active {
 
 .logo-container {
     display: flex;
-    align-items: center;
-    gap: 15px;
+    align-items: center;   /* вертикално центриране */
+    gap: 12px;             /* разстояние между лого и текст */
 }
 
 .logo {
-    height: 105px;
-    transition: 0.3s ease-in-out;
+    height: 70px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 0 6px rgba(140, 82, 255, 0.5));
 }
 
 .logo:hover {
@@ -240,4 +242,27 @@ footer {
         flex-direction: column;
         align-items: center;
     }
+}
+.cart-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+#cart-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(140,82,255,0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #8c52ff;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#cart-button:hover {
+    background: #8c52ff;
+    transform: scale(1.05);
 }
