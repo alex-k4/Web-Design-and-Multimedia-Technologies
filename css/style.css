@@ -1,4 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
 
+/* RESET BASE */
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
@@ -7,7 +9,7 @@ body {
     margin: 0;
 }
 
-
+/* ================= HEADER ================= */
 header {
     display: flex;
     justify-content: space-between;
@@ -18,6 +20,33 @@ header {
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
+/* LOGO */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    height: 70px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 0 8px rgba(140, 82, 255, 0.6));
+}
+
+/* GAME FORGE TEXT */
+.logo-container h1 {
+    font-family: 'Bungee', cursive;
+    font-size: 38px;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 1px;
+    text-shadow:
+        0 0 10px #8c52ff,
+        0 0 20px #3b82f6;
+}
+
+/* NAV */
 header nav ul {
     display: flex;
     gap: 20px;
@@ -29,7 +58,6 @@ header nav ul {
 header nav ul li a {
     color: #e5e5e5;
     text-decoration: none;
-    font-size: 18px;
     padding: 6px 12px;
     border-radius: 6px;
     transition: 0.3s;
@@ -38,93 +66,17 @@ header nav ul li a {
 header nav ul li a:hover,
 header nav ul li a.active {
     background: #8c52ff;
-    color: #fff;
 }
 
-.logo-container {
-    display: flex;
-    align-items: center;   /* вертикално центриране */
-    gap: 12px;             /* разстояние между лого и текст */
-}
-
-.logo {
-    height: 70px;
-    width: auto;
-    display: block;
-    filter: drop-shadow(0 0 6px rgba(140, 82, 255, 0.5));
-}
-
-.logo:hover {
-    animation: swing 1s ease-in-out;
-}
-
-@keyframes swing {
-    0% { transform: rotate(-15deg); }
-    50% { transform: rotate(15deg); }
-    100% { transform: rotate(-15deg); }
-}
-
-.bungee-regular {
-    font-family: 'Bungee', cursive;
-    font-size: 36px;
-    color: #e5e5e5;
-    margin: 0;
-}
-.hero-overlay {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    .hero h2 {
-    animation: floatText 4s ease-in-out infinite;
-}
-.hero h2 {
-    animation: floatText 4s ease-in-out infinite;
-}
-
-@keyframes floatText {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-
-@keyframes floatText {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-}
+/* ================= HERO ================= */
 .hero {
     height: 100vh;
     position: relative;
     overflow: hidden;
-
     background: url('../images/hero-fantasy.png') center/cover no-repeat;
-    
-    animation: heroZoom 20s ease-in-out infinite alternate;
 }
 
-
-/* бавен zoom ефект */
-@keyframes heroZoom {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(1.08);
-    }
-}
-
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-        circle at center,
-        rgba(0,0,0,0.3),
-        rgba(0,0,0,0.85)
-    );
-    z-index: 1;
-}
+/* dark overlay */
 .hero::before {
     content: "";
     position: absolute;
@@ -132,8 +84,10 @@ header nav ul li a.active {
     background: rgba(0,0,0,0.65);
 }
 
+/* hero content */
 .hero-overlay {
     position: relative;
+    z-index: 2;
     text-align: center;
     padding: 50px;
     background: rgba(10,10,20,0.6);
@@ -141,13 +95,21 @@ header nav ul li a.active {
     backdrop-filter: blur(8px);
 }
 
+/* floating title */
 .hero h2 {
     font-size: 50px;
     font-family: 'Bungee', cursive;
-    color: #fff;
     text-shadow: 0 0 20px #8c52ff;
+    animation: floatText 4s ease-in-out infinite;
 }
 
+@keyframes floatText {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* button */
 .hero .btn {
     margin-top: 20px;
     display: inline-block;
@@ -163,6 +125,7 @@ header nav ul li a.active {
     transform: scale(1.05);
 }
 
+/* ================= FEATURES ================= */
 .features {
     padding: 50px 20px;
     text-align: center;
@@ -170,9 +133,9 @@ header nav ul li a.active {
 
 .feature-grid {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: 25px;
+    flex-wrap: wrap;
 }
 
 .feature {
@@ -189,6 +152,7 @@ header nav ul li a.active {
     box-shadow: 0 0 25px rgba(140,82,255,0.5);
 }
 
+/* ================= BUTTON ================= */
 .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -198,6 +162,32 @@ header nav ul li a.active {
     text-decoration: none;
 }
 
+/* ================= CART ================= */
+#cart-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(140,82,255,0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #8c52ff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#cart-button:hover {
+    background: #8c52ff;
+    transform: scale(1.05);
+}
+
+.cart-icon {
+    width: 24px;
+    height: 24px;
+    filter: drop-shadow(0 0 6px #8c52ff);
+}
+
+/* ================= CART WINDOW ================= */
 #cart-window {
     position: fixed;
     top: 100px;
@@ -207,26 +197,26 @@ header nav ul li a.active {
     background: rgba(10,10,20,0.95);
     color: white;
     border: 1px solid #8c52ff;
-    box-shadow: 0 0 20px rgba(140,82,255,0.4);
-    backdrop-filter: blur(8px);
     border-radius: 10px;
     z-index: 999;
+    backdrop-filter: blur(8px);
 }
 
+/* ================= FOOTER ================= */
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #0b0b12;
+    background: #0b0b12;
     color: #aaa;
     border-top: 1px solid rgba(255,255,255,0.1);
 }
 
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
-
     header {
         flex-direction: column;
-        text-align: center;
         gap: 10px;
+        text-align: center;
     }
 
     header nav ul {
@@ -242,27 +232,4 @@ footer {
         flex-direction: column;
         align-items: center;
     }
-}
-.cart-icon {
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
-    margin-right: 8px;
-}
-#cart-button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(140,82,255,0.8);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    border: 1px solid #8c52ff;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-#cart-button:hover {
-    background: #8c52ff;
-    transform: scale(1.05);
 }
