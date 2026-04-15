@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-        <title>About - Game Forge</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./css/reset.css">
-        <link rel="stylesheet" href="./css/style.css">
-    </head>
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+
+    <title>Game Forge - Home</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
 <body>
-    <header>
-        <div class="logo-container">
+
+<!-- HEADER -->
+<header>
+    <div class="logo-container">
+
         <img src="images/logo.png" alt="Game Forge Logo" class="logo">
+
         <h1 class="bungee-regular">Game Forge</h1>
+
         <nav>
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
@@ -22,47 +33,70 @@
                 <li><a href="contacts.html">Contacts</a></li>
             </ul>
         </nav>
-        <div class="cart-container ml-4 relative">
-            <button id="cart-button" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">
+
+        <!-- CART -->
+        <div class="cart-container">
+            <button id="cart-button" class="cart-btn">
                 Кошница 🛒 (<span id="cart-count">0</span>)
             </button>
         </div>
-    </header>
 
-<div id="cart-window" class="hidden fixed top-20 right-5 w-80 bg-white shadow-lg p-4 rounded z-50">
-    <h3 class="text-lg font-bold mb-3">Кошница</h3>
-    <div id="cart-items" class="mb-3"></div>
-    <button onclick="checkout()" class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 w-full">Поръчай</button>
+    </div>
+</header>
+
+<!-- CART WINDOW -->
+<div id="cart-window" class="hidden">
+    <h3>Кошница</h3>
+    <div id="cart-items"></div>
+    <button onclick="checkout()" class="btn">Поръчай</button>
 </div>
 
-    <main>
-        <section class="hero">
-            <h2>Добре дошли в Game Forge!</h2>
-            <p>Тук можете да създадете ваша собствена настолна игра.</p>
-            <a href="about.html" class="btn">Learn More</a>
-        </section>
+<!-- HERO -->
+<section class="hero">
 
-        <section class="features">
-            <h2>Our Services</h2>
-            <div class="feature-grid">
-                <div class="feature">
-                    <h3>Създай собствена игра</h3>
-                    <p>Тук можете да изберете вашите предпочитания за създаването на играта.</p>
-                    <a href="bootstrap.html" class="btn-secondary">Започни сега</a>
-                </div>
-                <div class="feature">
-                    <h3>Виж готови модели</h3>
-                    <p>Тук можете да видите готови модели на игри, които да персонализирате.</p>
-                    <a href="tailwind.html" class="btn-secondary">Разгледай</a>
-                </div>
-            </div>
-        </section>
-    </main>
+    <div class="hero-overlay">
 
-    <footer>
-        <p>&copy; 2026 Game Forge. All rights reserved.</p>
-    </footer>
+        <h2>Create. Customize. Conquer.</h2>
 
-    <script src="js/script.js"></script>
+        <p>Forge your own dark fantasy board game universe</p>
+
+        <a href="bootstrap.html" class="btn">
+            Start Crafting
+        </a>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+
+    <h2>Our Services</h2>
+
+    <div class="feature-grid">
+
+        <div class="feature">
+            <h3>Създай игра</h3>
+            <p>Персонализирай всяка част от твоята настолна игра.</p>
+            <a href="bootstrap.html" class="btn-secondary">Започни</a>
+        </div>
+
+        <div class="feature">
+            <h3>Готови модели</h3>
+            <p>Разгледай готови шаблони и ги направи свои.</p>
+            <a href="tailwind.html" class="btn-secondary">Разгледай</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2026 Game Forge. All rights reserved.</p>
+</footer>
+
+<script src="js/script.js"></script>
+
 </body>
 </html>

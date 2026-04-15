@@ -1,71 +1,168 @@
-/* Body */
+
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    background-color: #ffffff; /* бял фон за цялата страница */
-    color: #333333; /* тъмен текст за контраст */
+    background-color: #0b0b12;
+    color: #e5e5e5;
+    margin: 0;
 }
 
-/* Header */
+
 header {
     display: flex;
-    justify-content: space-between; 
-    align-items: center;           
+    justify-content: space-between;
+    align-items: center;
     padding: 20px 40px;
-    background-color: #ffffff; /* бял фон за header */
-    color: #333333;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 header nav ul {
     display: flex;
     gap: 20px;
     list-style: none;
-}
-
-header nav ul li {
-    margin: 0 15px;
+    margin: 0;
+    padding: 0;
 }
 
 header nav ul li a {
-    color: #333333; /* тъмен текст за навигация */
+    color: #e5e5e5;
     text-decoration: none;
     font-size: 18px;
-    padding: 5px 10px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
 }
 
-header nav ul li a.active,
-header nav ul li a:hover {
-    background-color: #8c52ff; /* лилаво за hover/активно меню */
-    color: #ffffff; 
-    border-radius: 5px;
+header nav ul li a:hover,
+header nav ul li a.active {
+    background: #8c52ff;
+    color: #fff;
 }
 
-/* Hero Section с градиент */
-.hero {
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    height: 105px;
+    transition: 0.3s ease-in-out;
+}
+
+.logo:hover {
+    animation: swing 1s ease-in-out;
+}
+
+@keyframes swing {
+    0% { transform: rotate(-15deg); }
+    50% { transform: rotate(15deg); }
+    100% { transform: rotate(-15deg); }
+}
+
+.bungee-regular {
+    font-family: 'Bungee', cursive;
+    font-size: 36px;
+    color: #e5e5e5;
+    margin: 0;
+}
+.hero-overlay {
+    position: relative;
+    z-index: 2;
     text-align: center;
-    padding: 80px 20px;
-    background: linear-gradient(90deg, #8c52ff, #5170ff); /* лилаво към синьо */
-    color: white; /* текстът в hero секцията остава бял за контраст */
+    .hero h2 {
+    animation: floatText 4s ease-in-out infinite;
+}
+.hero h2 {
+    animation: floatText 4s ease-in-out infinite;
+}
+
+@keyframes floatText {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes floatText {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+}
+.hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+
+    background: url('../images/hero-fantasy.png') center/cover no-repeat;
+    
+    animation: heroZoom 20s ease-in-out infinite alternate;
+}
+
+
+/* бавен zoom ефект */
+@keyframes heroZoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.08);
+    }
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at center,
+        rgba(0,0,0,0.3),
+        rgba(0,0,0,0.85)
+    );
+    z-index: 1;
+}
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+}
+
+.hero-overlay {
+    position: relative;
+    text-align: center;
+    padding: 50px;
+    background: rgba(10,10,20,0.6);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+}
+
+.hero h2 {
+    font-size: 50px;
+    font-family: 'Bungee', cursive;
+    color: #fff;
+    text-shadow: 0 0 20px #8c52ff;
 }
 
 .hero .btn {
-    display: inline-block;
     margin-top: 20px;
-    padding: 10px 20px;
-    color: #ffffff;
-    background-color: #8c52ff; /* primary бутон */
+    display: inline-block;
+    padding: 12px 25px;
+    background: linear-gradient(90deg, #8c52ff, #3b82f6);
+    color: white;
+    border-radius: 8px;
     text-decoration: none;
-    border-radius: 5px;
+    transition: 0.3s;
 }
 
 .hero .btn:hover {
-    background-color: #5170ff; /* hover ефект бутон */
+    transform: scale(1.05);
 }
 
-/* Features */
 .features {
-    padding: 40px 20px;
+    padding: 50px 20px;
     text-align: center;
 }
 
@@ -77,91 +174,70 @@ header nav ul li a:hover {
 }
 
 .feature {
-    background-color: #f5f5f5; /* светло сив фон за картите */
+    background: rgba(20,20,30,0.9);
     padding: 20px;
-    width: 250px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 260px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.3s;
 }
 
-/* Footer */
+.feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(140,82,255,0.5);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #8c52ff;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+#cart-window {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    width: 300px;
+    padding: 15px;
+    background: rgba(10,10,20,0.95);
+    color: white;
+    border: 1px solid #8c52ff;
+    box-shadow: 0 0 20px rgba(140,82,255,0.4);
+    backdrop-filter: blur(8px);
+    border-radius: 10px;
+    z-index: 999;
+}
+
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #ffffff; /* бял фон за footer */
-    color: #333333;
-    border-top: 1px solid #ddd;
+    background-color: #0b0b12;
+    color: #aaa;
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
+
     header {
         flex-direction: column;
         text-align: center;
+        gap: 10px;
     }
-    .logo-container {
-        margin-bottom: 10px;
-    }
+
     header nav ul {
         flex-direction: column;
         gap: 10px;
     }
-    .logo {
-        height: 50px;
+
+    .hero h2 {
+        font-size: 32px;
     }
-    .bungee-regular {
-        font-size: 28px;
+
+    .feature-grid {
+        flex-direction: column;
+        align-items: center;
     }
-    header nav ul li a {
-        font-size: 16px;
-    }
-}
-
-main {
-    max-width: 1100px;
-    margin: auto;
-}
-
-.feature:hover {
-    transform: scale(1.05);
-    transition: 0.3s;
-}
-
-.logo {
-    height: 105px; 
-    vertical-align: middle;
-    margin-right: 15px;
-    transition: transform 0.2s ease-in-out; /* плавен преход */
-}
-
-.logo:hover {
-    animation: swing 1s ease-in-out infinite; /* завърта се наляво-надясно */
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 15px;    
-}
-
-.logo-container h1 {
-    color: #333333;         
-    font-family: 'Roboto', sans-serif; 
-    font-size: 36px;
-    margin: 0;
-    font-weight: 700;
-}
-
-@keyframes swing {
-    0% { transform: rotate(-15deg); }
-    50% { transform: rotate(15deg); }
-    100% { transform: rotate(-15deg); }
-}
-.bungee-regular {
-    font-family: 'Bungee', cursive; /* шрифт Bungee */
-    font-weight: 400;
-    font-style: normal;
-    color: #333333; /* тъмен текст за бял фон */
-    font-size: 36px; /* размер на заглавието */
-    margin: 0;
 }
