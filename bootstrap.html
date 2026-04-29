@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
 
-    <title>Създай игра - Game Forge (Bootstrap)</title>
+    <title>Създай игра - Game Forge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
 
     <!-- YOUR STYLES -->
     <link rel="stylesheet" href="./css/reset.css">
@@ -16,81 +22,86 @@
 
 <body class="bg-dark text-light">
 
-    <!-- HEADER -->
-    <header class="d-flex justify-content-between align-items-center p-3 bg-black bg-opacity-75 shadow-sm">
+<!-- HEADER -->
+<header class="d-flex justify-content-between align-items-center p-3 bg-black bg-opacity-75 shadow-sm">
 
-        <div class="logo-container">
-            <img src="images/logo.png" class="logo">
-            <h1 class="bungee-regular">Game Forge</h1>
+    <!-- LEFT -->
+    <div class="logo-container d-flex align-items-center gap-2">
+        <img src="images/logo.png" class="logo">
+        <h1 class="bungee-regular m-0">Game Forge</h1>
+    </div>
+
+    <!-- RIGHT NAV -->
+    <nav>
+        <ul class="nav">
+
+            <li class="nav-item">
+                <a class="nav-link text-light" href="index.html">Начало</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link text-light" href="about.html">За нас</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link text-light" href="contacts.html">Контакти</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link active text-warning fw-bold" href="bootstrap.html">
+                    Създай игра
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+
+</header>
+
+<!-- MAIN -->
+<main class="container my-5">
+
+    <h2 class="text-center mb-3 text-warning">
+        Създай своя настолна игра
+    </h2>
+
+    <p class="text-center mb-5 text-secondary">
+        Избери стил, тема и компоненти
+    </p>
+
+    <!-- FORM -->
+    <form class="row g-3 p-4 bg-black bg-opacity-50 rounded shadow-lg border border-secondary">
+
+        <div class="col-md-6">
+            <label class="form-label">Име на играта</label>
+            <input type="text" class="form-control" placeholder="Въведи име">
         </div>
 
-        <nav>
-            <ul class="nav">
+        <div class="col-md-6">
+            <label class="form-label">Брой играчи</label>
+            <input type="number" class="form-control" placeholder="1-6">
+        </div>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Начало</a>
-                </li>
+        <div class="col-12">
+            <label class="form-label">Описание</label>
+            <textarea class="form-control" rows="4"></textarea>
+        </div>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="about.html">За нас</a>
-                </li>
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-warning px-4 py-2">
+                Създай игра
+            </button>
+        </div>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="contacts.html">Контакти</a>
-                </li>
+    </form>
 
-                <li class="nav-item">
-                    <a class="nav-link active" href="bootstrap.html">Създай игра</a>
-                </li>
+</main>
 
-            </ul>
-        </nav>
+<footer class="text-center py-3 border-top border-secondary">
+    &copy; 2026 Game Forge
+</footer>
 
-    </header>
-
-    <!-- MAIN -->
-    <main class="container my-5">
-
-        <h2 class="text-center mb-3">Създай своя персонализирана настолна игра</h2>
-        <p class="text-center mb-5">
-            Избери стил, тема и компоненти за твоята игра
-        </p>
-
-        <!-- FORM (GAME UI STYLE) -->
-        <form class="row g-3 p-4 bg-black bg-opacity-50 rounded shadow">
-
-            <div class="col-md-6">
-                <label class="form-label">Име на играта</label>
-                <input type="text" class="form-control" placeholder="Въведи име">
-            </div>
-
-            <div class="col-md-6">
-                <label class="form-label">Брой играчи</label>
-                <input type="number" class="form-control" placeholder="1-6">
-            </div>
-
-            <div class="col-12">
-                <label class="form-label">Описание на играта</label>
-                <textarea class="form-control" rows="4"></textarea>
-            </div>
-
-            <div class="col-12 text-center">
-                <button type="submit" class="btn btn-primary px-4 py-2">
-                    Създай игра
-                </button>
-            </div>
-
-        </form>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="text-center py-3 border-top border-secondary">
-        &copy; 2026 Game Forge
-    </footer>
-
-    <!-- BOOTSTRAP JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

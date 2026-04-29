@@ -19,22 +19,44 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* HTML5 display fix */
+/* HTML5 fix */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
-/* ⭐ MODERN ADDITIONS */
+/* ================= MODERN ADDITIONS ================= */
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  background-color: #0b0b12;
+  color: #e5e5e5;
+}
+
+/* lists */
 ol, ul {
   list-style: none;
 }
 
+/* images */
 img {
   max-width: 100%;
   display: block;
+}
+
+/* links */
+a {
+  text-decoration: none;
+  color: inherit;
 }

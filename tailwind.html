@@ -6,10 +6,10 @@
     <title>Разгледай модели - Game Forge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Tailwind CDN -->
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- YOUR CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -17,34 +17,37 @@
 <body class="bg-gray-900 text-white font-sans">
 
 <!-- HEADER -->
-<header class="flex justify-between items-center p-5 shadow-sm bg-black/60">
+<header class="flex justify-between items-center p-5 bg-black/60 shadow-sm">
 
     <div class="flex items-center gap-3">
-        <img src="images/logo.png" alt="Game Forge Logo" class="h-20">
-        <h1 class="text-3xl font-bold">Game Forge</h1>
+        <img src="images/logo.png" alt="Game Forge Logo" class="h-16">
+        <h1 class="text-2xl font-bold">Game Forge</h1>
     </div>
 
     <nav>
         <ul class="flex gap-4">
-            <li><a href="index.html" class="text-purple-400 font-semibold">Начало</a></li>
+            <li><a href="index.html" class="text-purple-400">Начало</a></li>
             <li><a href="about.html" class="text-purple-400">За нас</a></li>
             <li><a href="contacts.html" class="text-purple-400">Контакти</a></li>
         </ul>
     </nav>
 
-    <div>
-        <button id="cart-button" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">
-            Кошница 🛒 (<span id="cart-count">0</span>)
-        </button>
-    </div>
+    <!-- CART -->
+    <button id="cart-button"
+        class="bg-purple-600 px-3 py-1 rounded hover:bg-purple-700">
+        🛒 Кошница (<span id="cart-count">0</span>)
+    </button>
 
 </header>
 
-<!-- CART -->
-<div id="cart-window" class="hidden">
+<!-- CART WINDOW -->
+<div id="cart-window" class="hidden fixed top-20 right-5 w-80 bg-gray-800 p-4 rounded shadow-lg z-50">
     <h3 class="text-lg font-bold mb-3">Кошница</h3>
+
     <div id="cart-items" class="mb-3"></div>
-    <button onclick="checkout()" class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 w-full">
+
+    <button onclick="checkout()"
+        class="bg-green-600 w-full py-1 rounded hover:bg-green-700">
         Поръчай
     </button>
 </div>
@@ -53,141 +56,54 @@
 <main class="max-w-6xl mx-auto my-10 px-5">
 
     <h2 class="text-4xl text-center mb-6">Готови модели на настолни игри</h2>
+    <p class="text-center mb-10">Разгледайте и добавете в кошницата</p>
 
-    <p class="text-center mb-10">Разгледайте нашите предложения и ги персонализирайте</p>
-
-    <!-- GRID START -->
     <div class="grid sm:grid-cols-1 md:grid-cols-3 gap-6">
 
-        <!-- GAME 1 -->
-        <div class="bg-gray-800 p-5 rounded shadow hover:scale-105 transition">
-            <img src="images/game1.png" class="w-full h-48 object-cover mb-3 rounded">
-            <h3 class="text-xl font-bold">Класически карти</h3>
-            <p>Цена: 30 €</p>
+        <!-- PRODUCT -->
+        <div class="bg-gray-800 p-5 rounded shadow">
+            <img src="images/game1.png" class="w-full h-48 object-cover rounded mb-3">
+            <h3 class="font-bold text-xl">Класически карти</h3>
+            <p>30 €</p>
 
-            <input id="q1" type="number" min="1" value="1" class="border p-1 w-20 mb-2 text-black">
+            <input id="q1" type="number" value="1" min="1"
+                class="text-black w-20 p-1 mt-2 mb-2">
 
             <button onclick="addToCart('Класически карти', 30, document.getElementById('q1').value)"
-                    class="bg-purple-600 px-3 py-1 rounded hover:bg-purple-700">
+                class="bg-purple-600 px-3 py-1 rounded hover:bg-purple-700">
                 Добави
             </button>
         </div>
 
-        <!-- GAME 2 -->
-        <div class="bg-gray-800 p-5 rounded shadow hover:scale-105 transition">
-            <img src="images/game2.png" class="w-full h-48 object-cover mb-3 rounded">
-            <h3 class="text-xl font-bold">Мистериозни</h3>
-            <p>Цена: 40 €</p>
+        <div class="bg-gray-800 p-5 rounded shadow">
+            <img src="images/game2.png" class="w-full h-48 object-cover rounded mb-3">
+            <h3 class="font-bold text-xl">Мистериозни</h3>
+            <p>40 €</p>
 
-            <input id="q2" type="number" min="1" value="1" class="border p-1 w-20 mb-2 text-black">
+            <input id="q2" type="number" value="1" min="1"
+                class="text-black w-20 p-1 mt-2 mb-2">
 
             <button onclick="addToCart('Мистериозни', 40, document.getElementById('q2').value)"
-                    class="bg-purple-600 px-3 py-1 rounded hover:bg-purple-700">
+                class="bg-purple-600 px-3 py-1 rounded hover:bg-purple-700">
                 Добави
             </button>
         </div>
 
-        <!-- GAME 3 -->
-        <div class="bg-gray-800 p-5 rounded shadow hover:scale-105 transition">
-            <img src="images/game3.png" class="w-full h-48 object-cover mb-3 rounded">
-            <h3 class="text-xl font-bold">Персонализирани карти</h3>
-            <p>Цена: 45 €</p>
+        <div class="bg-gray-800 p-5 rounded shadow">
+            <img src="images/game3.png" class="w-full h-48 object-cover rounded mb-3">
+            <h3 class="font-bold text-xl">Персонализирани карти</h3>
+            <p>45 €</p>
 
-            <input id="q3" type="number" min="1" value="1" class="border p-1 w-20 mb-2 text-black">
+            <input id="q3" type="number" value="1" min="1"
+                class="text-black w-20 p-1 mt-2 mb-2">
 
             <button onclick="addToCart('Персонализирани карти', 45, document.getElementById('q3').value)"
-                    class="bg-purple-600 px-3 py-1 rounded hover:bg-purple-700">
-                Добави
-            </button>
-        </div>
-
-        <!-- GAME 4 -->
-        <div class="bg-gray-800 p-5 rounded shadow hover:scale-105 transition">
-            <img src="images/game4.png" class="w-full h-48 object-cover mb-3 rounded">
-            <h3 class="text-xl font-bold">Тип карта</h3>
-            <p>Цена: 50 €</p>
-
-            <input id="q4" type="number" min="1" value="1" class="border p-1 w-20 mb-2 text-black">
-
-            <button onclick="addToCart('Тип карта', 50, document.getElementById('q4').value)"
-                    class="bg-purple-600 px-3 py-1 rounded hover:bg-purple-700">
-                Добави
-            </button>
-        </div>
-
-        <!-- GAME 5 -->
-        <div class="bg-gray-800 p-5 rounded shadow hover:scale-105 transition">
-            <img src="images/game5.png" class="w-full h-48 object-cover mb-3 rounded">
-            <h3 class="text-xl font-bold">Образователни</h3>
-            <p>Цена: 15 €</p>
-
-            <input id="q5" type="number" min="1" value="1" class="border p-1 w-20 mb-2 text-black">
-
-            <button onclick="addToCart('Образователни', 15, document.getElementById('q5').value)"
-                    class="bg-purple-600 px-3 py-1 rounded hover:bg-purple-700">
-                Добави
-            </button>
-        </div>
-
-        <!-- GAME 6 -->
-        <div class="bg-gray-800 p-5 rounded shadow hover:scale-105 transition">
-            <img src="images/game6.png" class="w-full h-48 object-cover mb-3 rounded">
-            <h3 class="text-xl font-bold">Домино</h3>
-            <p>Цена: 20 €</p>
-
-            <input id="q6" type="number" min="1" value="1" class="border p-1 w-20 mb-2 text-black">
-
-            <button onclick="addToCart('Домино', 20, document.getElementById('q6').value)"
-                    class="bg-purple-600 px-3 py-1 rounded hover:bg-purple-700">
-                Добави
-            </button>
-        </div>
-
-        <!-- GAME 7 -->
-        <div class="bg-gray-800 p-5 rounded shadow hover:scale-105 transition">
-            <img src="images/game7.png" class="w-full h-48 object-cover mb-3 rounded">
-            <h3 class="text-xl font-bold">Галактика</h3>
-            <p>Цена: 35 €</p>
-
-            <input id="q7" type="number" min="1" value="1" class="border p-1 w-20 mb-2 text-black">
-
-            <button onclick="addToCart('Галактика', 35, document.getElementById('q7').value)"
-                    class="bg-purple-600 px-3 py-1 rounded hover:bg-purple-700">
-                Добави
-            </button>
-        </div>
-
-        <!-- GAME 8 -->
-        <div class="bg-gray-800 p-5 rounded shadow hover:scale-105 transition">
-            <img src="images/game8.png" class="w-full h-48 object-cover mb-3 rounded">
-            <h3 class="text-xl font-bold">История</h3>
-            <p>Цена: 40 €</p>
-
-            <input id="q8" type="number" min="1" value="1" class="border p-1 w-20 mb-2 text-black">
-
-            <button onclick="addToCart('История', 40, document.getElementById('q8').value)"
-                    class="bg-purple-600 px-3 py-1 rounded hover:bg-purple-700">
-                Добави
-            </button>
-        </div>
-
-        <!-- GAME 9 -->
-        <div class="bg-gray-800 p-5 rounded shadow hover:scale-105 transition">
-            <img src="images/game9.png" class="w-full h-48 object-cover mb-3 rounded">
-            <h3 class="text-xl font-bold">Хотел</h3>
-            <p>Цена: 25 €</p>
-
-            <input id="q9" type="number" min="1" value="1" class="border p-1 w-20 mb-2 text-black">
-
-            <button onclick="addToCart('Хотел', 25, document.getElementById('q9').value)"
-                    class="bg-purple-600 px-3 py-1 rounded hover:bg-purple-700">
+                class="bg-purple-600 px-3 py-1 rounded hover:bg-purple-700">
                 Добави
             </button>
         </div>
 
     </div>
-    <!-- GRID END -->
-
 </main>
 
 <script src="js/script.js"></script>

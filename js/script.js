@@ -22,8 +22,9 @@ $(document).ready(function () {
     }
 
     function updateCartDisplay() {
-        document.getElementById('cart-count').textContent =
-            cart.reduce((sum, item) => sum + item.quantity, 0);
+        $("#cart-count").text(
+            cart.reduce((sum, item) => sum + item.quantity, 0)
+        );
     }
 
     function getTotal() {
@@ -31,24 +32,24 @@ $(document).ready(function () {
     }
 
     function renderCartItems() {
-        const container = document.getElementById('cart-items');
-        container.innerHTML = '';
+        const container = $("#cart-items");
+        container.html("");
 
         cart.forEach((item, index) => {
-            container.innerHTML += `
-                <div class="flex justify-between items-center mb-2 border-b pb-2">
+            container.append(`
+                <div class="cart-item">
                     <span>${item.name} x${item.quantity}</span>
                     <span>${item.price * item.quantity} лв.</span>
                     <button onclick="removeFromCart(${index})">❌</button>
                 </div>
-            `;
+            `);
         });
 
-        container.innerHTML += `
-            <div class="mt-3 font-bold">
+        container.append(`
+            <div class="cart-total">
                 Общо: ${getTotal()} лв.
             </div>
-        `;
+        `);
     }
 
     function removeFromCart(index) {
@@ -57,9 +58,8 @@ $(document).ready(function () {
         renderCartItems();
     }
 
-    document.getElementById('cart-button').addEventListener('click', () => {
-        let cartWindow = document.getElementById('cart-window');
-        cartWindow.classList.toggle('hidden');
+    $("#cart-button").click(function () {
+        $("#cart-window").toggleClass("hidden");
         renderCartItems();
     });
 
@@ -78,7 +78,7 @@ $(document).ready(function () {
         renderCartItems();
     };
 
-    /* ================= AJAX ================= */
+    /* ================= AJAX (FIXED) ================= */
 
     $("#load-data").click(function () {
 
@@ -86,19 +86,16 @@ $(document).ready(function () {
             url: "https://jsonplaceholder.typicode.com/posts/1",
             method: "GET",
             success: function (data) {
-
                 $("#api-result").html(`
                     <div class="api-card">
                         <h3>${data.title}</h3>
                         <p>${data.body}</p>
                     </div>
                 `);
-
             },
             error: function () {
-                $("#api-result").html("<p>Грешка при зареждане!</p>");
+                $("#api-result").html("<p>Грешка при зареждане</p>");
             }
-
         });
 
     });
