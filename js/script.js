@@ -1,4 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
+$(document).ready(function () {
+
+    console.log("jQuery работи!");
+
+    /* ================= CART ================= */
 
     let cart = [];
 
@@ -22,6 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
             cart.reduce((sum, item) => sum + item.quantity, 0);
     }
 
+    function getTotal() {
+        return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    }
+
     function renderCartItems() {
         const container = document.getElementById('cart-items');
         container.innerHTML = '';
@@ -41,10 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 Общо: ${getTotal()} лв.
             </div>
         `;
-    }
-
-    function getTotal() {
-        return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
     }
 
     function removeFromCart(index) {
@@ -73,5 +77,30 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCartDisplay();
         renderCartItems();
     };
+
+    /* ================= AJAX ================= */
+
+    $("#load-data").click(function () {
+
+        $.ajax({
+            url: "https://jsonplaceholder.typicode.com/posts/1",
+            method: "GET",
+            success: function (data) {
+
+                $("#api-result").html(`
+                    <div class="api-card">
+                        <h3>${data.title}</h3>
+                        <p>${data.body}</p>
+                    </div>
+                `);
+
+            },
+            error: function () {
+                $("#api-result").html("<p>Грешка при зареждане!</p>");
+            }
+
+        });
+
+    });
 
 });
