@@ -138,13 +138,335 @@ header nav ul li a.active {
     border: 2px solid transparent;
 }
 
+.btn-small {
+    padding: 8px 16px;
+    font-size: 14px;
+    background: rgba(140,82,255,0.65);
+}
+
+.hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
 .hero .btn:hover,
 .btn:hover {
     box-shadow: 0 0 20px rgba(140,82,255,0.8), inset 0 0 10px rgba(255,255,255,0.1);
     border-color: #fff;
 }
 
-/* ================= FEATURES ================= */
+/* ================= VIDEO SECTION ================= */
+.video-section {
+    padding: 50px 20px;
+    background: rgba(10,10,20,0.9);
+    text-align: center;
+}
+
+.video-section h3 {
+    font-size: 32px;
+    color: #fff;
+    margin-bottom: 25px;
+    text-shadow: 0 0 10px #8c52ff;
+    font-family: 'Bungee', cursive;
+}
+
+.video-card {
+    display: flex;
+    justify-content: center;
+}
+
+.video-placeholder {
+    max-width: 900px;
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(140,82,255,0.3);
+    border-radius: 16px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.video-play-icon {
+    width: 90px;
+    height: 90px;
+    background: rgba(140,82,255,0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+    color: #fff;
+}
+
+.video-placeholder p {
+    color: #ddd;
+    font-size: 16px;
+    max-width: 720px;
+}
+
+/* ================= CONTACT SECTION ================= */
+.contact-section {
+    padding: 50px 20px;
+    background: #0b0b12;
+}
+
+.contact-section h3 {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+    text-shadow: 0 0 10px #8c52ff;
+    font-family: 'Bungee', cursive;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 25px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.contact-card {
+    background: rgba(20,20,30,0.95);
+    border: 1px solid rgba(140,82,255,0.3);
+    border-radius: 14px;
+    padding: 30px;
+}
+
+.contact-card h4 {
+    color: #8c52ff;
+    margin-bottom: 20px;
+}
+
+.contact-card p,
+.contact-card a {
+    color: #ccc;
+    font-size: 14px;
+}
+
+.contact-card a {
+    color: #64c896;
+    text-decoration: none;
+}
+
+.contact-card a:hover {
+    text-decoration: underline;
+}
+
+.contact-section .form-group {
+    margin-bottom: 18px;
+}
+
+.contact-section input,
+.contact-section textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    font-size: 14px;
+}
+
+.contact-section textarea {
+    min-height: 120px;
+}
+
+.social-links {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    color: #8c52ff;
+    text-decoration: none;
+    border: 1px solid rgba(140,82,255,0.4);
+    padding: 10px 18px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    background: rgba(140,82,255,0.15);
+    border-color: #8c52ff;
+}
+
+/* ================= SHOWCASE GRID FIX ================= */
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(260px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ================= PERSONALIZE BUTTON ================= */
+.personalize-btn {
+    padding: 6px 12px;
+    background: rgba(100,200,150,0.8);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 12px;
+}
+
+.personalize-btn:hover {
+    background: #64c896;
+}
+
+/* ================= DELIVERY MODAL ================= */
+.delivery-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(420px, 95%);
+    background: rgba(10,10,20,0.98);
+    border: 1px solid rgba(140,82,255,0.5);
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    z-index: 10000;
+    padding: 25px;
+}
+
+.delivery-modal h3 {
+    margin-top: 0;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.delivery-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.delivery-option:hover {
+    background: rgba(140,82,255,0.15);
+}
+
+.delivery-option input {
+    accent-color: #8c52ff;
+}
+
+.delivery-summary {
+    margin-top: 20px;
+    padding: 16px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    color: #e5e5e5;
+}
+
+.delivery-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.delivery-actions button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.delivery-actions .btn-primary {
+    background: #8c52ff;
+    color: white;
+}
+
+.delivery-actions .btn-secondary {
+    background: rgba(255,255,255,0.07);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+.delivery-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 9990;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+    .showcase-grid {
+        grid-template-columns: repeat(2, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    header nav {
+        order: 3;
+        width: 100%;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .hero-actions {
+        width: 100%;
+    }
+
+    .hero {
+        height: 55vh;
+    }
+
+    .showcase-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 50vh;
+    }
+
+    .hero-actions {
+        gap: 10px;
+    }
+
+    .video-placeholder {
+        padding: 25px;
+    }
+
+    .contact-grid {
+        gap: 18px;
+    }
+}
 .features {
     padding: 50px 20px;
     text-align: center;
@@ -488,7 +810,7 @@ footer {
 
 .showcase-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, minmax(260px, 1fr));
     gap: 25px;
     max-width: 1200px;
     margin: 0 auto;
@@ -1084,6 +1406,90 @@ footer {
     text-decoration: none;
     font-weight: bold;
     transition: 0.3s;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #8c52ff;
+    background: #1a1a2a;
+}
+
+.profile-avatar.placeholder {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #8c52ff;
+    font-size: 14px;
+}
+
+.profile-details p {
+    color: #ddd;
+    margin: 0;
+    font-size: 15px;
+}
+
+.profile-orders {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(140,82,255,0.2);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.profile-orders h4 {
+    margin-top: 0;
+    color: #8c52ff;
+}
+
+.profile-orders ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.profile-orders li {
+    background: rgba(20,20,30,0.95);
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #ccc;
+    font-size: 14px;
+}
+
+.profile-logout {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #ff5b5b;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.profile-logout:hover {
+    background: #e54545;
 }
 
 .auth-link a:hover {

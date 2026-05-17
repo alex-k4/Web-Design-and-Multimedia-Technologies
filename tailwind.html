@@ -64,7 +64,8 @@
             <div style="padding: 0 15px 15px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
                 <span style="color: #64c896; font-weight: bold;">30 лв.</span>
                 <input type="number" value="1" min="1" class="game-qty" style="width: 50px; padding: 5px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-size: 12px;">
-                <button onclick="addToCart('Класически карти', 30, this.previousElementSibling.value)" class="btn" style="padding: 6px 12px; font-size: 12px;">Добави</button>
+                <button onclick="addToCart('Класически карти', 30, this.parentElement.querySelector('.game-qty').value)" class="btn" style="padding: 6px 12px; font-size: 12px;">Добави</button>
+                <button onclick="openPersonalize('Класически карти')" class="personalize-btn">Персонализирай</button>
             </div>
         </div>
 
@@ -76,7 +77,8 @@
             <div style="padding: 0 15px 15px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
                 <span style="color: #64c896; font-weight: bold;">40 лв.</span>
                 <input type="number" value="1" min="1" class="game-qty" style="width: 50px; padding: 5px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-size: 12px;">
-                <button onclick="addToCart('Мистериозни', 40, this.previousElementSibling.value)" class="btn" style="padding: 6px 12px; font-size: 12px;">Добави</button>
+                <button onclick="addToCart('Мистериозни', 40, this.parentElement.querySelector('.game-qty').value)" class="btn" style="padding: 6px 12px; font-size: 12px;">Добави</button>
+                <button onclick="openPersonalize('Мистериозни')" class="personalize-btn">Персонализирай</button>
             </div>
         </div>
 
@@ -88,7 +90,8 @@
             <div style="padding: 0 15px 15px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
                 <span style="color: #64c896; font-weight: bold;">45 лв.</span>
                 <input type="number" value="1" min="1" class="game-qty" style="width: 50px; padding: 5px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-size: 12px;">
-                <button onclick="addToCart('Персонализирани карти', 45, this.previousElementSibling.value)" class="btn" style="padding: 6px 12px; font-size: 12px;">Добави</button>
+                <button onclick="addToCart('Персонализирани карти', 45, this.parentElement.querySelector('.game-qty').value)" class="btn" style="padding: 6px 12px; font-size: 12px;">Добави</button>
+                <button onclick="openPersonalize('Персонализирани карти')" class="personalize-btn">Персонализирай</button>
             </div>
         </div>
 
@@ -100,7 +103,8 @@
             <div style="padding: 0 15px 15px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
                 <span style="color: #64c896; font-weight: bold;">50 лв.</span>
                 <input type="number" value="1" min="1" class="game-qty" style="width: 50px; padding: 5px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-size: 12px;">
-                <button onclick="addToCart('Стратегия и война', 50, this.previousElementSibling.value)" class="btn" style="padding: 6px 12px; font-size: 12px;">Добави</button>
+                <button onclick="addToCart('Стратегия и война', 50, this.parentElement.querySelector('.game-qty').value)" class="btn" style="padding: 6px 12px; font-size: 12px;">Добави</button>
+                <button onclick="openPersonalize('Стратегия и война')" class="personalize-btn">Персонализирай</button>
             </div>
         </div>
 
@@ -112,7 +116,8 @@
             <div style="padding: 0 15px 15px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
                 <span style="color: #64c896; font-weight: bold;">35 лв.</span>
                 <input type="number" value="1" min="1" class="game-qty" style="width: 50px; padding: 5px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-size: 12px;">
-                <button onclick="addToCart('Приключения в гората', 35, this.previousElementSibling.value)" class="btn" style="padding: 6px 12px; font-size: 12px;">Добави</button>
+                <button onclick="addToCart('Приключения в гората', 35, this.parentElement.querySelector('.game-qty').value)" class="btn" style="padding: 6px 12px; font-size: 12px;">Добави</button>
+                <button onclick="openPersonalize('Приключения в гората')" class="personalize-btn">Персонализирай</button>
             </div>
         </div>
 
@@ -124,7 +129,8 @@
             <div style="padding: 0 15px 15px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
                 <span style="color: #64c896; font-weight: bold;">55 лв.</span>
                 <input type="number" value="1" min="1" class="game-qty" style="width: 50px; padding: 5px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-size: 12px;">
-                <button onclick="addToCart('Космическа експедиция', 55, this.previousElementSibling.value)" class="btn" style="padding: 6px 12px; font-size: 12px;">Добави</button>
+                <button onclick="addToCart('Космическа експедиция', 55, this.parentElement.querySelector('.game-qty').value)" class="btn" style="padding: 6px 12px; font-size: 12px;">Добави</button>
+                <button onclick="openPersonalize('Космическа експедиция')" class="personalize-btn">Персонализирай</button>
             </div>
         </div>
 
@@ -136,7 +142,8 @@
             <div style="padding: 0 15px 15px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
                 <span style="color: #64c896; font-weight: bold;">48 лв.</span>
                 <input type="number" value="1" min="1" class="game-qty" style="width: 50px; padding: 5px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-size: 12px;">
-                <button onclick="addToCart('Дракони и съкровища', 48, this.previousElementSibling.value)" class="btn" style="padding: 6px 12px; font-size: 12px;">Добави</button>
+                <button onclick="addToCart('Дракони и съкровища', 48, this.parentElement.querySelector('.game-qty').value)" class="btn" style="padding: 6px 12px; font-size: 12px;">Добави</button>
+                <button onclick="openPersonalize('Дракони и съкровища')" class="personalize-btn">Персонализирай</button>
             </div>
         </div>
 
@@ -148,7 +155,8 @@
             <div style="padding: 0 15px 15px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
                 <span style="color: #64c896; font-weight: bold;">42 лв.</span>
                 <input type="number" value="1" min="1" class="game-qty" style="width: 50px; padding: 5px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-size: 12px;">
-                <button onclick="addToCart('Древни цивилизации', 42, this.previousElementSibling.value)" class="btn" style="padding: 6px 12px; font-size: 12px;">Добави</button>
+                <button onclick="addToCart('Древни цивилизации', 42, this.parentElement.querySelector('.game-qty').value)" class="btn" style="padding: 6px 12px; font-size: 12px;">Добави</button>
+                <button onclick="openPersonalize('Древни цивилизации')" class="personalize-btn">Персонализирай</button>
             </div>
         </div>
 
@@ -160,7 +168,8 @@
             <div style="padding: 0 15px 15px; display: flex; justify-content: space-between; align-items: center; gap: 8px;">
                 <span style="color: #64c896; font-weight: bold;">52 лв.</span>
                 <input type="number" value="1" min="1" class="game-qty" style="width: 50px; padding: 5px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 4px; font-size: 12px;">
-                <button onclick="addToCart('Стълкновение на магии', 52, this.previousElementSibling.value)" class="btn" style="padding: 6px 12px; font-size: 12px;">Добави</button>
+                <button onclick="addToCart('Стълкновение на магии', 52, this.parentElement.querySelector('.game-qty').value)" class="btn" style="padding: 6px 12px; font-size: 12px;">Добави</button>
+                <button onclick="openPersonalize('Стълкновение на магии')" class="personalize-btn">Персонализирай</button>
             </div>
         </div>
     </div>

@@ -47,33 +47,18 @@
     <div class="hero-overlay">
         <h2>Създайте вашата уникална настолна игра</h2>
         <p>Създайте, променете, допълнете игра</p>
-        <a href="bootstrap.html" class="btn">Започнете да създавате</a>
-    </div>
-</section>
-
-<!-- SERVICES (fix: не е hero) -->
-<section class="features">
-
-    <img src="images/hero.jpg" alt="Hero" class="hero-img">
-
-    <div class="hero-overlay">
-        <h2>Нашите услуги</h2>
-
-        <div class="hero-buttons">
-
-            <a href="bootstrap.html" class="glass-btn">Създайте игра</a>
-            <a href="tailwind.html" class="glass-btn">Готови модели</a>
-
+        <div class="hero-actions">
+            <a href="bootstrap.html" class="btn">Започнете да създавате</a>
+            <a href="tailwind.html" class="btn btn-small">Готови модели</a>
         </div>
     </div>
-
 </section>
 
 <!-- SHOWCASE - TOP 3 GAMES -->
 <section class="showcase">
     <h3>Препоръчани игри</h3>
     
-    <div class="showcase-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+    <div class="showcase-grid">
         <div class="showcase-card">
             <img src="images/game1.png" alt="Game 1">
             <h4>Класически карти</h4>
@@ -102,6 +87,18 @@
             <div style="padding: 0 15px 15px;">
                 <a href="tailwind.html" class="btn">Разгледай</a>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- VIDEO TUTORIAL -->
+<section class="video-section">
+    <h3>Видео урок: Как да използвате менюто &quot;Създай игра&quot;</h3>
+    <div class="video-card">
+        <div class="video-placeholder">
+            <div class="video-play-icon">▶</div>
+            <p>Слушайте AI обяснението за използване на менюто</p>
+            <button class="btn btn-small" onclick="playAiVoice()">Пусни AI глас</button>
         </div>
     </div>
 </section>
@@ -150,6 +147,44 @@
     </div>
 </section>
 
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+    <h3>Свържете се с нас</h3>
+    <div class="contact-grid">
+        <div class="contact-card">
+            <h4>Напиши ни</h4>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="contact-name">Име</label>
+                    <input type="text" id="contact-name" name="name" placeholder="Твоето име" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-email">Имейл</label>
+                    <input type="email" id="contact-email" name="email" placeholder="твой@имейл.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-message">Съобщение</label>
+                    <textarea id="contact-message" name="message" placeholder="Какво искаш да обсъдим?..." required></textarea>
+                </div>
+                <button type="submit" class="btn">Изпрати</button>
+            </form>
+        </div>
+        <div class="contact-card contact-info">
+            <h4>Контакти</h4>
+            <p>Instagram: <a href="https://instagram.com" target="_blank">@gameforge</a></p>
+            <p>Facebook: <a href="https://facebook.com" target="_blank">facebook.com/gameforge</a></p>
+            <p>Email: <a href="mailto:info@gameforge.bg">info@gameforge.bg</a></p>
+            <p>Телефон: <a href="tel:+359888123456">+359 888 123 456</a></p>
+        </div>
+    </div>
+
+    <div class="social-links">
+        <a href="https://instagram.com" target="_blank">Instagram</a>
+        <a href="https://facebook.com" target="_blank">Facebook</a>
+        <a href="mailto:info@gameforge.bg">Email</a>
+    </div>
+</section>
+
 <!-- AJAX OUTPUT (важно) -->
 <div id="api-result"></div>
 
@@ -157,6 +192,7 @@
     <p>&copy; 2026 Game Forge. All rights reserved.</p>
 </footer>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="js/script.js"></script>
 
 </body>

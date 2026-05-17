@@ -60,7 +60,9 @@
             <button type="submit" class="auth-submit">Вход</button>
         </form>
 
-        <p class="auth-link">
+        <div id="profile-view" class="auth-container hidden"></div>
+
+        <p class="auth-link" id="login-navigation">
             Нямаш акаунт? <a href="register.html">Регистрирай се тук</a>
         </p>
     </div>
@@ -74,6 +76,58 @@
 <script src="js/script.js"></script>
 <script>
 $(document).ready(function() {
+    function renderProfile(user) {
+        const orders = JSON.parse(localStorage.getItem('userOrders') || '[]');
+        const avatar = localStorage.getItem('profileAvatar');
+        const avatarHtml = avatar ? `<img src="${avatar}" class="profile-avatar" alt="Аватар">` : `<div class="profile-avatar placeholder">Аватар</div>`;
+
+        $('#login-form').addClass('hidden');
+        $('#login-navigation').addClass('hidden');
+        $('#profile-view').removeClass('hidden').html(`
+            <div class="profile-card">
+                <div class="profile-header">
+                    ${avatarHtml}
+                    <div class="profile-details">
+                        <p><strong>Имейл:</strong> ${user.email}</p>
+                        <p><strong>Последно влизане:</strong> ${user.loginTime || user.registrationTime}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="avatar-upload">Качи аватар</label>
+                    <input type="file" id="avatar-upload" accept="image/*">
+                </div>
+                <button class="profile-logout" id="logout-button">Излез от профила</button>
+                <div class="profile-orders">
+                    <h4>История на поръчките</h4>
+                    <ul>
+                        ${orders.length ? orders.map(order => `<li><strong>${order.date}</strong><br>${order.items.length} артикула · ${order.total} лв.<br>${order.deliveryType}</li>`).join('') : '<li>Все още нямате поръчки.</li>'}
+                    </ul>
+                </div>
+            </div>
+        `);
+
+        $('#avatar-upload').change(function() {
+            const file = this.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                localStorage.setItem('profileAvatar', e.target.result);
+                renderProfile(user);
+            };
+            reader.readAsDataURL(file);
+        });
+
+        $('#logout-button').click(function() {
+            localStorage.removeItem('loggedInUser');
+            window.location.reload();
+        });
+    }
+
+    const storedUser = JSON.parse(localStorage.getItem('loggedInUser') || 'null');
+    if (storedUser) {
+        renderProfile(storedUser);
+    }
+
     $("#login-form").submit(function(e) {
         e.preventDefault();
         

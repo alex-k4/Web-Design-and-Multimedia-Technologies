@@ -137,8 +137,96 @@ $(document).ready(function () {
         }
     });
 
+    $("#contact-form").submit(function (e) {
+        e.preventDefault();
+        alert("Вашето съобщение беше изпратено. Ще се свържем с вас скоро!");
+        this.reset();
+    });
+
     window.addToCart = addToCart;
     window.removeFromCart = removeFromCart;
+
+    window.openPersonalize = function(name) {
+        const personalization = JSON.parse(localStorage.getItem('personalizations') || '[]');
+        const existing = personalization.find(item => item.name === name) || {};
+
+        const modalHtml = `
+            <div class="delivery-overlay" id="personalize-overlay"></div>
+            <div class="delivery-modal" id="personalize-modal">
+                <h3>Персонализирай: ${name}</h3>
+                <div class="form-group">
+                    <label for="personalize-color">Цвят на картите</label>
+                    <select id="personalize-color">
+                        <option value="Класически" ${existing.color === 'Класически' ? 'selected' : ''}>Класически</option>
+                        <option value="Неонов" ${existing.color === 'Неонов' ? 'selected' : ''}>Неонов</option>
+                        <option value="Тъмни" ${existing.color === 'Тъмни' ? 'selected' : ''}>Тъмни</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="personalize-characters">Добави герои</label>
+                    <select id="personalize-characters">
+                        <option value="Без герои" ${existing.characters === 'Без герои' ? 'selected' : ''}>Без герои</option>
+                        <option value="Фентъзи" ${existing.characters === 'Фентъзи' ? 'selected' : ''}>Фентъзи</option>
+                        <option value="Космически" ${existing.characters === 'Космически' ? 'selected' : ''}>Космически</option>
+                        <option value="Исторически" ${existing.characters === 'Исторически' ? 'selected' : ''}>Исторически</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="personalize-special">Специални карти</label>
+                    <select id="personalize-special">
+                        <option value="Без" ${existing.special === 'Без' ? 'selected' : ''}>Без</option>
+                        <option value="Магически бонуси" ${existing.special === 'Магически бонуси' ? 'selected' : ''}>Магически бонуси</option>
+                        <option value="Събития" ${existing.special === 'Събития' ? 'selected' : ''}>Събития</option>
+                        <option value="Предизвикателства" ${existing.special === 'Предизвикателства' ? 'selected' : ''}>Предизвикателства</option>
+                    </select>
+                </div>
+                <div class="delivery-actions">
+                    <button class="btn-primary" onclick="savePersonalization('${name}')">Запази</button>
+                    <button class="btn-secondary" onclick="closePersonalizeModal()">Откажи</button>
+                </div>
+            </div>
+        `;
+
+        document.body.insertAdjacentHTML('beforeend', modalHtml);
+    };
+
+    window.savePersonalization = function(name) {
+        const color = document.getElementById('personalize-color').value;
+        const characters = document.getElementById('personalize-characters').value;
+        const special = document.getElementById('personalize-special').value;
+
+        const personalizations = JSON.parse(localStorage.getItem('personalizations') || '[]');
+        const index = personalizations.findIndex(item => item.name === name);
+        const record = { name, color, characters, special, savedAt: new Date().toLocaleString() };
+
+        if (index !== -1) {
+            personalizations[index] = record;
+        } else {
+            personalizations.push(record);
+        }
+
+        localStorage.setItem('personalizations', JSON.stringify(personalizations));
+        alert('Персонализацията е запазена!');
+        closePersonalizeModal();
+    };
+
+    window.closePersonalizeModal = function() {
+        const modal = document.getElementById('personalize-modal');
+        const overlay = document.getElementById('personalize-overlay');
+        if (modal) modal.remove();
+        if (overlay) overlay.remove();
+    };
+
+    window.playAiVoice = function() {
+        if ('speechSynthesis' in window) {
+            const text = 'Това е бърз демонстрационен клип за началната страница. Натиснете Создайте игра, за да започнете. Можете да персонализирате картите и да изберете готов шаблон.';
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'bg-BG';
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert('Вашият браузър не поддържа AI глас.');
+        }
+    };
 
     window.checkout = function () {
         if (cart.length === 0) {
@@ -153,91 +241,30 @@ $(document).ready(function () {
     // Функция за избор на доставка
     window.showDeliveryOptions = function() {
         const deliveryOptions = `
-            <div style="
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: rgba(20,20,30,0.95);
-                padding: 30px;
-                border-radius: 12px;
-                border: 2px solid #8c52ff;
-                z-index: 10000;
-                max-width: 400px;
-                width: 90%;
-                box-shadow: 0 0 40px rgba(140,82,255,0.5);
-            " id="delivery-modal">
-                <h3 style="color: #fff; margin-top: 0; margin-bottom: 20px; text-align: center;">
-                    Избери метод на доставка
-                </h3>
-                
-                <div style="display: flex; flex-direction: column; gap: 12px;">
-                    <button onclick="processDelivery('standard')" style="
-                        padding: 12px;
-                        background: rgba(100,200,150,0.8);
-                        color: white;
-                        border: 1px solid #64c896;
-                        border-radius: 6px;
-                        cursor: pointer;
-                        transition: 0.3s;
-                        font-size: 14px;
-                    " onmouseover="this.style.background='#64c896'" onmouseout="this.style.background='rgba(100,200,150,0.8)'">
-                        🚚 Обикновена доставка (5-7 работни дни) - 5 лв.
-                    </button>
-                    
-                    <button onclick="processDelivery('express')" style="
-                        padding: 12px;
-                        background: rgba(140,82,255,0.8);
-                        color: white;
-                        border: 1px solid #8c52ff;
-                        border-radius: 6px;
-                        cursor: pointer;
-                        transition: 0.3s;
-                        font-size: 14px;
-                    " onmouseover="this.style.background='#8c52ff'" onmouseout="this.style.background='rgba(140,82,255,0.8)'">
-                        ⚡ Експресна доставка (2-3 работни дни) - 15 лв.
-                    </button>
-                    
-                    <button onclick="processDelivery('pickup')" style="
-                        padding: 12px;
-                        background: rgba(255,193,7,0.8);
-                        color: black;
-                        border: 1px solid #ffc107;
-                        border-radius: 6px;
-                        cursor: pointer;
-                        transition: 0.3s;
-                        font-size: 14px;
-                    " onmouseover="this.style.background='#ffc107'" onmouseout="this.style.background='rgba(255,193,7,0.8)'">
-                        🏪 Самовземане (приемни пункт) - 0 лв.
-                    </button>
-                    
-                    <button onclick="closeDeliveryModal()" style="
-                        padding: 10px;
-                        background: rgba(255,85,85,0.8);
-                        color: white;
-                        border: 1px solid #ff5555;
-                        border-radius: 6px;
-                        cursor: pointer;
-                        transition: 0.3s;
-                        font-size: 13px;
-                        margin-top: 10px;
-                    " onmouseover="this.style.background='#ff5555'" onmouseout="this.style.background='rgba(255,85,85,0.8)'">
-                        ❌ Отмени
-                    </button>
+            <div class="delivery-overlay" id="delivery-overlay"></div>
+            <div class="delivery-modal" id="delivery-modal">
+                <h3>Избери метод на доставка</h3>
+                <label class="delivery-option">
+                    <span>🚚 Обикновена доставка (5-7 работни дни) - 5 лв.</span>
+                    <input type="radio" name="delivery" value="standard" checked>
+                </label>
+                <label class="delivery-option">
+                    <span>⚡ Експресна доставка (2-3 работни дни) - 15 лв.</span>
+                    <input type="radio" name="delivery" value="express">
+                </label>
+                <label class="delivery-option">
+                    <span>🏪 Самовземане (приемни пункт) - 0 лв.</span>
+                    <input type="radio" name="delivery" value="pickup">
+                </label>
+                <div class="delivery-summary">
+                    Моля, изберете вашия начин на доставка и натиснете Продължи.
+                </div>
+                <div class="delivery-actions">
+                    <button class="btn-primary" onclick="processDelivery(document.querySelector('input[name=delivery]:checked').value)">Продължи</button>
+                    <button class="btn-secondary" onclick="closeDeliveryModal()">Откажи</button>
                 </div>
             </div>
-            
-            <div style="
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.7);
-                z-index: 9999;
-            " id="delivery-overlay" onclick="closeDeliveryModal()"></div>
         `;
-        
         document.body.insertAdjacentHTML('beforeend', deliveryOptions);
     };
 
@@ -259,6 +286,16 @@ $(document).ready(function () {
         const total = getTotal() + shippingCost;
         
         closeDeliveryModal();
+        
+        const orders = JSON.parse(localStorage.getItem('userOrders') || '[]');
+        orders.push({
+            items: cart,
+            deliveryType,
+            shippingCost,
+            total,
+            date: new Date().toLocaleString()
+        });
+        localStorage.setItem('userOrders', JSON.stringify(orders));
         
         alert(
             `✅ Поръчката е потвърдена!\n\n` +
