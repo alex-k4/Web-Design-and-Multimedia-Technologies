@@ -119,6 +119,14 @@ header nav ul li a.active {
     animation: floatText 4s ease-in-out infinite;
 }
 
+.hero-subtitle {
+    color: #d9d9ff;
+    font-size: 20px;
+    margin: 18px auto 0;
+    max-width: 760px;
+    line-height: 1.7;
+}
+
 @keyframes floatText {
     0% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
@@ -207,6 +215,136 @@ header nav ul li a.active {
     color: #ddd;
     font-size: 16px;
     max-width: 720px;
+}
+
+.video-player {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(140,82,255,0.3);
+    box-shadow: 0 0 30px rgba(0,0,0,0.4);
+}
+
+.video-card {
+    position: relative;
+    contain: layout;
+    will-change: transform;
+}
+
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.45);
+    color: #fff;
+    font-size: 20px;
+    border-radius: 16px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    will-change: opacity;
+}
+
+.video-overlay.show {
+    opacity: 1;
+}
+
+.video-overlay-text {
+    padding: 18px 26px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgba(140,82,255,0.9), rgba(60,130,255,0.9));
+    box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    font-weight: 700;
+}
+
+.video-card.zoomed .video-player {
+    transform: scale(1.12);
+    transition: transform 0.4s ease;
+}
+
+.ready-section,
+.bubble-section,
+.offer-section {
+    padding: 50px 20px;
+    background: rgba(10,10,20,0.92);
+    text-align: center;
+}
+
+.ready-section h3,
+.offer-section h3,
+.bubble-section h3 {
+    color: #fff;
+    font-size: 32px;
+    margin-bottom: 16px;
+    font-family: 'Bungee', cursive;
+    text-shadow: 0 0 8px rgba(140,82,255,0.6);
+}
+
+.ready-card {
+    max-width: 900px;
+    margin: 0 auto 32px;
+    padding: 28px 25px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(140,82,255,0.25);
+    box-shadow: 0 0 25px rgba(140,82,255,0.12);
+}
+
+.ready-card p {
+    color: #dcdcdc;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.offer-grid,
+.bubble-grid,
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.offer-card,
+.bubble-card,
+.about-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(140,82,255,0.24);
+    border-radius: 28px;
+    padding: 24px;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.offer-card h4,
+.bubble-card h4 {
+    margin: 0;
+    font-size: 22px;
+    color: #fff;
+}
+
+.offer-card p,
+.bubble-card p {
+    color: #d1d1d1;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.bubble-card {
+    border-radius: 34px;
+    background: linear-gradient(135deg, rgba(140,82,255,0.18), rgba(15,15,30,0.95));
+}
+
+.bubble-card:hover {
+    transform: translateY(-4px);
+    transition: transform 0.25s ease;
 }
 
 /* ================= CONTACT SECTION ================= */
@@ -958,6 +1096,7 @@ footer {
     margin-bottom: 6px;
 }
 
+select,
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -968,6 +1107,16 @@ footer {
     border-radius: 6px;
     font-size: 13px;
     transition: 0.3s;
+}
+
+select option,
+select optgroup {
+    background: rgba(15, 15, 25, 0.98);
+    color: #fff;
+}
+
+select::-ms-expand {
+    color: #fff;
 }
 
 .form-group input:focus,

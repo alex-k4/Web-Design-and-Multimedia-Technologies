@@ -180,6 +180,18 @@ $(document).ready(function () {
                         <option value="Предизвикателства" ${existing.special === 'Предизвикателства' ? 'selected' : ''}>Предизвикателства</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="personalize-note">Твоето съобщение</label>
+                    <textarea id="personalize-note" placeholder="Опиши накратко идеята, атмосферата или специалните детайли.">${existing.note || ''}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="personalize-contact">Имейл или телефон за контакт</label>
+                    <input type="text" id="personalize-contact" placeholder="Твой имейл или телефон" value="${existing.contact || ''}">
+                </div>
+                <div class="form-group">
+                    <label for="personalize-image">Прикачи картинка</label>
+                    <input type="file" id="personalize-image" accept="image/*">
+                </div>
                 <div class="delivery-actions">
                     <button class="btn-primary" onclick="savePersonalization('${name}')">Запази</button>
                     <button class="btn-secondary" onclick="closePersonalizeModal()">Откажи</button>
@@ -194,20 +206,38 @@ $(document).ready(function () {
         const color = document.getElementById('personalize-color').value;
         const characters = document.getElementById('personalize-characters').value;
         const special = document.getElementById('personalize-special').value;
+        const note = document.getElementById('personalize-note').value;
+        const contact = document.getElementById('personalize-contact').value;
+        const imageInput = document.getElementById('personalize-image');
+        const imageFile = imageInput.files[0];
 
         const personalizations = JSON.parse(localStorage.getItem('personalizations') || '[]');
         const index = personalizations.findIndex(item => item.name === name);
-        const record = { name, color, characters, special, savedAt: new Date().toLocaleString() };
+        const record = { name, color, characters, special, note, contact, savedAt: new Date().toLocaleString() };
 
-        if (index !== -1) {
-            personalizations[index] = record;
-        } else {
-            personalizations.push(record);
+        function storeAndClose(imageData) {
+            if (imageData) {
+                record.image = imageData;
+            }
+            if (index !== -1) {
+                personalizations[index] = record;
+            } else {
+                personalizations.push(record);
+            }
+            localStorage.setItem('personalizations', JSON.stringify(personalizations));
+            alert('Персонализацията е запазена!');
+            closePersonalizeModal();
         }
 
-        localStorage.setItem('personalizations', JSON.stringify(personalizations));
-        alert('Персонализацията е запазена!');
-        closePersonalizeModal();
+        if (imageFile) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                storeAndClose(e.target.result);
+            };
+            reader.readAsDataURL(imageFile);
+        } else {
+            storeAndClose();
+        }
     };
 
     window.closePersonalizeModal = function() {
@@ -267,6 +297,36 @@ $(document).ready(function () {
         `;
         document.body.insertAdjacentHTML('beforeend', deliveryOptions);
     };
+
+    // Video overlay: zoom and show gallery CTA
+    (function() {
+        const vid = document.getElementById('intro-video');
+        if (!vid) return;
+
+        // create overlay element
+        const overlay = document.createElement('div');
+        overlay.className = 'video-overlay';
+        overlay.style.display = 'none';
+        overlay.innerHTML = `<div class="video-overlay-text">game forge - тук твоята игра става реалност</div>`;
+        vid.parentElement.appendChild(overlay);
+
+        let triggered = false;
+        vid.addEventListener('timeupdate', function() {
+            // when video reaches certain time (approx. butterfly hit) show overlay and zoom
+            if (!triggered && vid.currentTime >= 3.5) {
+                triggered = true;
+                overlay.style.display = 'flex';
+                overlay.classList.add('show');
+                vid.parentElement.classList.add('zoomed');
+                setTimeout(() => {
+                    overlay.classList.remove('show');
+                    overlay.style.display = 'none';
+                    vid.parentElement.classList.remove('zoomed');
+                    document.getElementById('video-gallery').style.display = 'block';
+                }, 2200);
+            }
+        });
+    })();
 
     window.processDelivery = function(type) {
         let shippingCost = 0;

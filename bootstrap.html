@@ -134,7 +134,7 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Повод/Тема *</label>
+                        <label>Събитие *</label>
                         <div class="checkbox-group">
                             <div class="checkbox-item">
                                 <input type="checkbox" id="occasion-birthday" name="occasion" value="birthday">
@@ -146,7 +146,7 @@
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="occasion-event" name="occasion" value="event">
-                                <label for="occasion-event">Събитие/Партито</label>
+                                <label for="occasion-event">Събитие</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="occasion-corporate" name="occasion" value="corporate">
@@ -155,10 +155,6 @@
                             <div class="checkbox-item">
                                 <input type="checkbox" id="occasion-family" name="occasion" value="family">
                                 <label for="occasion-family">Семейно</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="occasion-custom" name="occasion" value="custom">
-                                <label for="occasion-custom">Пользованско</label>
                             </div>
                         </div>
                     </div>
@@ -211,7 +207,7 @@
                     <div class="form-group">
                         <label for="template">Шаблон/Стил</label>
                         <select id="template" name="template">
-                            <option value="">Без предустановка</option>
+                            <option value="">Без</option>
                             <option value="classic">Класически</option>
                             <option value="modern">Модерен</option>
                             <option value="vintage">Винтидж</option>
@@ -355,21 +351,42 @@
 
     function submitGameBuilder(e) {
         e.preventDefault();
-        
-        const gameName = document.getElementById('game-name').value;
-        if (gameName) {
-            alert(`✅ Игра "${gameName}" е успешно създадена!\nСкоро ще получиш имейл с детайли.`);
-            document.getElementById('game-builder-form').reset();
+
+        const form = document.getElementById('game-builder-form');
+        const formData = new FormData(form);
+        const gameName = formData.get('name') || document.getElementById('game-name').value;
+
+        if (!gameName) {
+            alert('Моля въведи име на играта.');
+            return;
         }
+
+        // Създаваме заявка и я запазваме
+        const requests = JSON.parse(localStorage.getItem('gameRequests') || '[]');
+        const logged = JSON.parse(localStorage.getItem('loggedInUser') || 'null');
+        const request = {
+            name: gameName,
+            status: 'в процес на обработка',
+            createdAt: new Date().toLocaleString(),
+            user: logged ? (logged.email || logged.name) : null
+        };
+        requests.push(request);
+        localStorage.setItem('gameRequests', JSON.stringify(requests));
+
+        alert(`✅ Заявката за игра "${gameName}" е приета. Наш служител ще се свърже за уточняване.`);
+
+        // Изчистване на формата и чернова
+        form.reset();
+        localStorage.removeItem('gameBuilderDraft');
     }
 
     function submitContact(e) {
         e.preventDefault();
-        
+
         const name = document.getElementById('contact-name').value;
         const phone = document.getElementById('contact-phone').value;
         const email = document.getElementById('contact-email').value;
-        
+
         alert(`✅ Запитът ти е получен!\nСлужител ще се свърже с теб на ${phone} или ${email}`);
         closeContactModal();
         document.querySelector('.contact-form-modal').reset();
@@ -381,6 +398,57 @@
             closeContactModal();
         }
     }
+
+    // --- Draft save/load for game builder ---
+    (function() {
+        const form = document.getElementById('game-builder-form');
+        if (!form) return;
+
+        // Load draft if exists
+        const draft = JSON.parse(localStorage.getItem('gameBuilderDraft') || 'null');
+        if (draft) {
+            Object.keys(draft).forEach(key => {
+                const el = document.querySelector(`[name="${key}"]`);
+                if (!el) return;
+                if (el.type === 'checkbox') {
+                    // handle checkboxes by value
+                    if (Array.isArray(draft[key])) {
+                        draft[key].forEach(v => {
+                            const cb = document.querySelector(`[name="${key}"][value="${v}"]`);
+                            if (cb) cb.checked = true;
+                        });
+                    }
+                } else if (el.type === 'radio') {
+                    const r = document.querySelector(`[name="${key}"][value="${draft[key]}"]`);
+                    if (r) r.checked = true;
+                } else {
+                    el.value = draft[key];
+                }
+            });
+        }
+
+        // Save on input change
+        form.addEventListener('input', function() {
+            const data = {};
+            new FormData(form).forEach((value, key) => {
+                if (data[key]) {
+                    if (!Array.isArray(data[key])) data[key] = [data[key]];
+                    data[key].push(value);
+                } else {
+                    data[key] = value;
+                }
+            });
+            localStorage.setItem('gameBuilderDraft', JSON.stringify(data));
+        });
+
+        // Clear draft when reset button clicked
+        const resetBtn = document.querySelector('.btn-reset');
+        if (resetBtn) {
+            resetBtn.addEventListener('click', function() {
+                localStorage.removeItem('gameBuilderDraft');
+            });
+        }
+    })();
 </script>
 
 </body>

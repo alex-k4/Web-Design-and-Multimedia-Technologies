@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
     <meta charset="UTF-8">
     <title>Game Forge</title>
@@ -45,12 +45,45 @@
 <!-- HERO -->
 <section class="hero">
     <div class="hero-overlay">
-        <h2>Създайте вашата уникална настолна игра</h2>
-        <p>Създайте, променете, допълнете игра</p>
+        <h2>Създай своето приключение</h2>
+        <p class="hero-subtitle">Готов ли си да създадеш своя настолна игра? Превърни идеята си в приключение и започни да изграждаш своя уникален свят с GameForge още днес.</p>
         <div class="hero-actions">
             <a href="bootstrap.html" class="btn">Започнете да създавате</a>
             <a href="tailwind.html" class="btn btn-small">Готови модели</a>
         </div>
+    </div>
+</section>
+
+<section class="ready-section">
+    <div class="ready-card">
+        <h3>GameForge превръща идеите в игри</h3>
+        <p>GameForge е платформа за създаване на персонализирани настолни игри, където въображението среща креативността. Създай собствена игра, избери правила, герои, стил и визуална идентичност, за да превърнеш идеята си в уникално игрово преживяване.</p>
+    </div>
+
+    <div class="offer-grid">
+        <div class="offer-card">
+            <h4>Персонализиран дизайн на игри</h4>
+            <p>Създавай уникални игрови полета, карти и компоненти според собствената си идея.</p>
+        </div>
+        <div class="offer-card">
+            <h4>Създаване на правила</h4>
+            <p>Настройвай механики, сценарии и игрови системи за напълно персонализирано преживяване.</p>
+        </div>
+        <div class="offer-card">
+            <h4>Визуална персонализация</h4>
+            <p>Избирай цветове, теми, илюстрации и стил, които да отразяват характера на твоята игра.</p>
+        </div>
+        
+    </div>
+</section>
+
+<section class="bubble-section">
+    <h3>За кого е GameForge?</h3>
+    <div class="bubble-grid">
+        <div class="bubble-card"><h4>Любители на настолни игри</h4><p>За всички, които търсят нови преживявания и искат да участват в създаването на цялостна игра.</p></div>
+        <div class="bubble-card"><h4>Креативни хора и дизайнери</h4><p>За тези, които искат да дадат форма на свои концепции с оригинален визуален и игрови стил.</p></div>
+        <div class="bubble-card"><h4>Проектни ентусиасти</h4><p>За хора с идеи, които желаят да развиват проекти и да ги превърнат в готови игри.</p></div>
+        <div class="bubble-card"><h4>Семейства и приятелски компании</h4><p>За забавни, социални и съвместни преживявания, които събират хората около масата.</p></div>
     </div>
 </section>
 
@@ -91,15 +124,22 @@
     </div>
 </section>
 
-<!-- VIDEO TUTORIAL -->
+<!-- VIDEO -->
 <section class="video-section">
-    <h3>Видео урок: Как да използвате менюто &quot;Създай игра&quot;</h3>
+    <h3 style="text-align:center;">Видео</h3>
     <div class="video-card">
-        <div class="video-placeholder">
-            <div class="video-play-icon">▶</div>
-            <p>Слушайте AI обяснението за използване на менюто</p>
-            <button class="btn btn-small" onclick="playAiVoice()">Пусни AI глас</button>
+        <video class="video-player" id="intro-video" controls preload="metadata">
+            <source src="videos/game_forge.mp4" type="video/mp4">
+            Вашият браузър не поддържа видео елемент.
+        </video>
+    </div>
+    <div id="video-gallery" style="margin-top:18px; display:none;">
+        <div class="offer-grid" style="max-width:900px; margin: 18px auto;">
+            <div class="offer-card"><img src="images/game1.png" style="width:100%; border-radius:12px;"></div>
+            <div class="offer-card"><img src="images/game5.png" style="width:100%; border-radius:12px;"></div>
+            <div class="offer-card"><img src="images/game7.png" style="width:100%; border-radius:12px;"></div>
         </div>
+        <div style="text-align:center; margin-top:12px;"><a href="bootstrap.html" class="btn">Започни да създаваш</a></div>
     </div>
 </section>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bg">
 <head>
     <meta charset="UTF-8">
     <title>Вход - Game Forge</title>
@@ -78,6 +78,7 @@
 $(document).ready(function() {
     function renderProfile(user) {
         const orders = JSON.parse(localStorage.getItem('userOrders') || '[]');
+        const personalizations = JSON.parse(localStorage.getItem('personalizations') || '[]');
         const avatar = localStorage.getItem('profileAvatar');
         const avatarHtml = avatar ? `<img src="${avatar}" class="profile-avatar" alt="Аватар">` : `<div class="profile-avatar placeholder">Аватар</div>`;
 
@@ -97,12 +98,28 @@ $(document).ready(function() {
                     <input type="file" id="avatar-upload" accept="image/*">
                 </div>
                 <button class="profile-logout" id="logout-button">Излез от профила</button>
-                <div class="profile-orders">
-                    <h4>История на поръчките</h4>
-                    <ul>
-                        ${orders.length ? orders.map(order => `<li><strong>${order.date}</strong><br>${order.items.length} артикула · ${order.total} лв.<br>${order.deliveryType}</li>`).join('') : '<li>Все още нямате поръчки.</li>'}
-                    </ul>
-                </div>
+                        <div class="profile-orders">
+                            <h4>История на поръчките</h4>
+                            <ul>
+                                ${orders.length ? orders.map(order => `<li><strong>${order.date}</strong><br>${order.items.length} артикула · ${order.total} лв.<br>${order.deliveryType}</li>`).join('') : '<li>Все още нямате поръчки.</li>'}
+                            </ul>
+                        </div>
+                        <div class="profile-orders">
+                            <h4>Запазени персонализации</h4>
+                            <ul>
+                                ${personalizations.length ? personalizations.map(item => `<li><strong>${item.name}</strong><br>Цвят: ${item.color || '—'}<br>Герои: ${item.characters || '—'}<br>Контакт: ${item.contact || 'не е добавен'}</li>`).join('') : '<li>Все още нямате запазена персонализация.</li>'}
+                            </ul>
+                        </div>
+                        <div class="profile-orders">
+                            <h4>Моите заявки за създаване на игри</h4>
+                            <ul>
+                                ${(() => {
+                                    const reqs = JSON.parse(localStorage.getItem('gameRequests') || '[]');
+                                    const userReqs = reqs.filter(r => !user.email || r.user === user.email || r.user === user.name);
+                                    return userReqs.length ? userReqs.map(r => `<li><strong>${r.name}</strong><br>Статус: ${r.status}<br>Дата: ${r.createdAt}</li>`).join('') : '<li>Нямате текущи заявки.</li>';
+                                })()}
+                            </ul>
+                        </div>
             </div>
         `);
 
