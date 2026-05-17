@@ -2,11 +2,8 @@ $(document).ready(function () {
 
     console.log("jQuery работи!");
 
-    /* ================= CART ================= */
-
     let cart = [];
 
-    // Зареждане на кошница от localStorage
     function loadCartFromLocalStorage() {
         const savedCart = localStorage.getItem('gameCart');
         if (savedCart) {
@@ -16,12 +13,10 @@ $(document).ready(function () {
         renderCartPageItems();
     }
 
-    // Запазване на кошница в localStorage
     function saveCartToLocalStorage() {
         localStorage.setItem('gameCart', JSON.stringify(cart));
     }
 
-    // Зареждане на кошница от памет
     loadCartFromLocalStorage();
 
     function addToCart(name, price, quantity) {
@@ -71,11 +66,10 @@ $(document).ready(function () {
         `);
     }
 
-    // Функция за рендериране на кошница на cart.html страница
     function renderCartPageItems() {
         const container = $("#cart-items");
         
-        if (!container.length) return; // Ако няма контейнер за кошница, не е cart.html
+        if (!container.length) return; 
         
         container.html("");
 
@@ -108,7 +102,6 @@ $(document).ready(function () {
             `);
         });
 
-        // Обновяване на общата цена
         $("#cart-summary").html(`
             <div class="cart-total">
                 <strong>Общо:</strong>
@@ -123,16 +116,16 @@ $(document).ready(function () {
         cart.splice(index, 1);
         updateCartDisplay();
         renderCartItems();
-        renderCartPageItems(); // Обновяване на cart.html
+        renderCartPageItems(); 
         saveCartToLocalStorage();
     }
 
     $("#cart-button").click(function () {
-        // Ако е на cart.html, прави го да отиде на index.html
+
         if (window.location.href.includes("cart.html")) {
             window.location.href = "index.html";
         } else {
-            // В противен случай отиди на cart.html
+
             window.location.href = "cart.html";
         }
     });
@@ -264,11 +257,9 @@ $(document).ready(function () {
             return;
         }
 
-        // Показвам меню за доставка
         showDeliveryOptions();
     };
 
-    // Функция за избор на доставка
     window.showDeliveryOptions = function() {
         const deliveryOptions = `
             <div class="delivery-overlay" id="delivery-overlay"></div>
@@ -298,12 +289,10 @@ $(document).ready(function () {
         document.body.insertAdjacentHTML('beforeend', deliveryOptions);
     };
 
-    // Video overlay: zoom and show gallery CTA
     (function() {
         const vid = document.getElementById('intro-video');
         if (!vid) return;
 
-        // create overlay element
         const overlay = document.createElement('div');
         overlay.className = 'video-overlay';
         overlay.style.display = 'none';
@@ -312,7 +301,6 @@ $(document).ready(function () {
 
         let triggered = false;
         vid.addEventListener('timeupdate', function() {
-            // when video reaches certain time (approx. butterfly hit) show overlay and zoom
             if (!triggered && vid.currentTime >= 3.5) {
                 triggered = true;
                 overlay.style.display = 'flex';
@@ -380,8 +368,6 @@ $(document).ready(function () {
         if (modal) modal.remove();
         if (overlay) overlay.remove();
     };
-
-    /* ================= AJAX (FIXED) ================= */
 
     $("#load-data").click(function () {
 

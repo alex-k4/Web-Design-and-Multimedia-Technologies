@@ -42,7 +42,6 @@
     </div>
 </header>
 
-<!-- REGISTER PAGE -->
 <section class="auth-section">
     <div class="auth-container">
         <h2>Регистрирай се</h2>
@@ -92,13 +91,11 @@ $(document).ready(function() {
         const password = $("#register-password").val();
         const confirm = $("#register-confirm").val();
         
-        // Проверка за паролите
         if (password !== confirm) {
             alert("Паролите не съвпадат!");
             return;
         }
-        
-        // Проверка за валидни данни
+
         if (name && email && password) {
             localStorage.setItem('loggedInUser', JSON.stringify({
                 name: name,

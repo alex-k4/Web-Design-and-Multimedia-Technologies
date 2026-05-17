@@ -42,7 +42,6 @@
     </div>
 </header>
 
-<!-- LOGIN PAGE -->
 <section class="auth-section">
     <div class="auth-container">
         <h2>Вход в акаунта</h2>
@@ -151,7 +150,6 @@ $(document).ready(function() {
         const email = $("#login-email").val();
         const password = $("#login-password").val();
         
-        // Проверка за валидни данни
         if (email && password) {
             localStorage.setItem('loggedInUser', JSON.stringify({
                 email: email,

@@ -43,7 +43,6 @@
     </div>
 </header>
 
-<!-- MAIN -->
 <main style="background: #0b0b12; min-height: 100vh; padding: 40px 20px;">
 
     <div style="max-width: 1000px; margin: 0 auto;">
@@ -55,10 +54,8 @@
             Избери стил, тема, цветове и компоненти - направи твоята уникална игра!
         </p>
 
-        <!-- BUILDER FORM -->
         <form id="game-builder-form" class="builder-form">
 
-            <!-- SECTION 1: BASIC INFO -->
             <div class="form-section">
                 <h4>📝 Основна информация</h4>
                 
@@ -104,7 +101,6 @@
                 </div>
             </div>
 
-            <!-- SECTION 2: GAME TYPE & OCCASION -->
             <div class="form-section">
                 <h4>🎮 Тип игра и повод</h4>
                 
@@ -161,7 +157,6 @@
                 </div>
             </div>
 
-            <!-- SECTION 3: THEME & DESIGN -->
             <div class="form-section">
                 <h4>🎨 Дизайн и тема</h4>
                 
@@ -218,7 +213,6 @@
                 </div>
             </div>
 
-            <!-- SECTION 4: COMPONENTS -->
             <div class="form-section">
                 <h4>🧩 Компоненти и съдържание</h4>
                 
@@ -262,7 +256,6 @@
                 </div>
             </div>
 
-            <!-- SECTION 5: IMAGES -->
             <div class="form-section">
                 <h4>🖼️ Снимки и графика</h4>
                 
@@ -278,7 +271,6 @@
                 </div>
             </div>
 
-            <!-- SECTION 6: ACTIONS -->
             <div class="form-actions">
                 <button type="submit" class="btn btn-submit" onclick="submitGameBuilder(event)">
                     ✅ Създай моята игра
@@ -297,7 +289,6 @@
 
 </main>
 
-<!-- CONTACT MODAL -->
 <div id="contact-modal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
@@ -361,7 +352,6 @@
             return;
         }
 
-        // Създаваме заявка и я запазваме
         const requests = JSON.parse(localStorage.getItem('gameRequests') || '[]');
         const logged = JSON.parse(localStorage.getItem('loggedInUser') || 'null');
         const request = {
@@ -375,7 +365,6 @@
 
         alert(`✅ Заявката за игра "${gameName}" е приета. Наш служител ще се свърже за уточняване.`);
 
-        // Изчистване на формата и чернова
         form.reset();
         localStorage.removeItem('gameBuilderDraft');
     }
@@ -387,7 +376,7 @@
         const phone = document.getElementById('contact-phone').value;
         const email = document.getElementById('contact-email').value;
 
-        alert(`✅ Запитът ти е получен!\nСлужител ще се свърже с теб на ${phone} или ${email}`);
+        alert(`✅ Записът ти е получен!\nСлужител ще се свърже с теб на ${phone} или ${email}`);
         closeContactModal();
         document.querySelector('.contact-form-modal').reset();
     }
@@ -399,19 +388,17 @@
         }
     }
 
-    // --- Draft save/load for game builder ---
     (function() {
         const form = document.getElementById('game-builder-form');
         if (!form) return;
 
-        // Load draft if exists
         const draft = JSON.parse(localStorage.getItem('gameBuilderDraft') || 'null');
         if (draft) {
             Object.keys(draft).forEach(key => {
                 const el = document.querySelector(`[name="${key}"]`);
                 if (!el) return;
                 if (el.type === 'checkbox') {
-                    // handle checkboxes by value
+
                     if (Array.isArray(draft[key])) {
                         draft[key].forEach(v => {
                             const cb = document.querySelector(`[name="${key}"][value="${v}"]`);
@@ -427,7 +414,6 @@
             });
         }
 
-        // Save on input change
         form.addEventListener('input', function() {
             const data = {};
             new FormData(form).forEach((value, key) => {
@@ -441,7 +427,6 @@
             localStorage.setItem('gameBuilderDraft', JSON.stringify(data));
         });
 
-        // Clear draft when reset button clicked
         const resetBtn = document.querySelector('.btn-reset');
         if (resetBtn) {
             resetBtn.addEventListener('click', function() {
