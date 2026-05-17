@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход - Game Forge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo-container">
+        <img src="images/logo.png" class="logo">
+        <h1 class="bungee-regular">Game Forge</h1>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Начало</a></li>
+            <li><a href="tailwind.html">Готови модели</a></li>
+            <li><a href="bootstrap.html">Създайте игра</a></li>
+            <li><a href="about.html">За нас</a></li>
+            <li><a href="contacts.html">Контакти</a></li>
+        </ul>
+    </nav>
+
+    <div class="cart-container">
+        <a href="login.html" class="auth-btn active">Вход</a>
+        <a href="register.html" class="auth-btn">Регистрация</a>
+        <button id="cart-button" class="cart-button">
+            <img src="images/icon_basket.gif" class="cart-icon" alt="Cart">
+            <span class="cart-text">Кошница</span>
+            (<span id="cart-count">0</span>)
+        </button>
+    </div>
+</header>
+
+<!-- LOGIN PAGE -->
+<section class="auth-section">
+    <div class="auth-container">
+        <h2>Вход в акаунта</h2>
+        <form id="login-form" class="auth-form">
+            <div class="form-group">
+                <label for="login-email">Имейл:</label>
+                <input type="email" id="login-email" name="email" required placeholder="вашия@имейл.com">
+            </div>
+
+            <div class="form-group">
+                <label for="login-password">Парола:</label>
+                <input type="password" id="login-password" name="password" required placeholder="Введите парола">
+            </div>
+
+            <button type="submit" class="auth-submit">Вход</button>
+        </form>
+
+        <p class="auth-link">
+            Нямаш акаунт? <a href="register.html">Регистрирай се тук</a>
+        </p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Game Forge. All rights reserved.</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/script.js"></script>
+<script>
+$(document).ready(function() {
+    $("#login-form").submit(function(e) {
+        e.preventDefault();
+        
+        const email = $("#login-email").val();
+        const password = $("#login-password").val();
+        
+        // Проверка за валидни данни
+        if (email && password) {
+            localStorage.setItem('loggedInUser', JSON.stringify({
+                email: email,
+                loginTime: new Date().toLocaleString()
+            }));
+            
+            alert("Успешно влязъл в акаунта!");
+            window.location.href = "index.html";
+        } else {
+            alert("Моля, попълнете всички полета!");
+        }
+    });
+});
+</script>
+
+</body>
+</html>

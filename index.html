@@ -24,14 +24,16 @@
     <nav>
         <ul>
             <li><a href="index.html" class="active">Начало</a></li>
+            <li><a href="tailwind.html">Готови модели</a></li>
+            <li><a href="bootstrap.html">Създайте игра</a></li>
             <li><a href="about.html">За нас</a></li>
             <li><a href="contacts.html">Контакти</a></li>
-            <li><a href="bootstrap.html">Създайте игра</a></li>
-            <li><a href="tailwind.html">Готови модели</a></li>
         </ul>
     </nav>
 
     <div class="cart-container">
+        <a href="login.html" class="auth-btn">Вход</a>
+        <a href="register.html" class="auth-btn">Регистрация</a>
         <button id="cart-button" class="cart-button">
             <img src="images/icon_basket.gif" class="cart-icon" alt="Cart">
             <span class="cart-text">Кошница</span>
@@ -39,13 +41,6 @@
         </button>
     </div>
 </header>
-
-<!-- CART -->
-<div id="cart-window" class="hidden">
-    <h3>Кошница</h3>
-    <div id="cart-items"></div>
-    <button onclick="checkout()">Поръчай</button>
-</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -72,6 +67,87 @@
         </div>
     </div>
 
+</section>
+
+<!-- SHOWCASE - TOP 3 GAMES -->
+<section class="showcase">
+    <h3>Препоръчани игри</h3>
+    
+    <div class="showcase-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="showcase-card">
+            <img src="images/game1.png" alt="Game 1">
+            <h4>Класически карти</h4>
+            <p>Традиционна игра с красиво дизайнирани карти - перфектна за семейни събирания.</p>
+            <p style="color: #64c896; font-weight: bold; padding: 0 15px;">30 лв.</p>
+            <div style="padding: 0 15px 15px;">
+                <a href="tailwind.html" class="btn">Разгледай</a>
+            </div>
+        </div>
+
+        <div class="showcase-card">
+            <img src="images/game5.png" alt="Game 5">
+            <h4>Приключения в гората</h4>
+            <p>Фантастично приключение в магическа гора - за любителите на приключенията.</p>
+            <p style="color: #64c896; font-weight: bold; padding: 0 15px;">35 лв.</p>
+            <div style="padding: 0 15px 15px;">
+                <a href="tailwind.html" class="btn">Разгледай</a>
+            </div>
+        </div>
+
+        <div class="showcase-card">
+            <img src="images/game7.png" alt="Game 7">
+            <h4>Дракони и съкровища</h4>
+            <p>Легендарната игра с драконите и съкровищата - адреналин гарантиран!</p>
+            <p style="color: #64c896; font-weight: bold; padding: 0 15px;">48 лв.</p>
+            <div style="padding: 0 15px 15px;">
+                <a href="tailwind.html" class="btn">Разгледай</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section">
+    <h3>Отзиви на клиентите</h3>
+    <p class="reviews-subtitle">Вижте какво казват нашите доволни клиенти</p>
+    
+    <div class="reviews-grid">
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Game Forge е направил най-удивителната игра за рождения ден на дъщеря ми! Всички гости бяха в восторг. Препоръчвам го на всички!"</p>
+            <p class="review-author">- Петър Петров</p>
+        </div>
+
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Отличен сервис и креативен подход. Тимът ми е използвал създадената игра за корпоративен event и всички се развеселиха. Браво!"</p>
+            <p class="review-author">- Мария Георгиева</p>
+        </div>
+
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Купих готовите модели и са супер качествени. Картите са хубаво направени и правилата са лесни за разбиране. Харесаха ми много!"</p>
+            <p class="review-author">- Иван Иванов</p>
+        </div>
+
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Персонализираните карти бяха идеален подарък! Качеството е невероятно и процесът на поръчка е бил много лесен. Много благодарен!"</p>
+            <p class="review-author">- Симона Козарева</p>
+        </div>
+
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Създадох с помощта на Game Forge игра за моя клубната вечер. Резултатът беше преди всичко! Всички мои приятели попитаха как е направена."</p>
+            <p class="review-author">- Александър Миланов</p>
+        </div>
+
+        <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">"Съчетанието на качество, креативност и цена е неустоимо. Game Forge е моят нов любимец за настолни игри. Препоръчвам го горещо!"</p>
+            <p class="review-author">- Елена Стефанова</p>
+        </div>
+    </div>
 </section>
 
 <!-- AJAX OUTPUT (важно) -->

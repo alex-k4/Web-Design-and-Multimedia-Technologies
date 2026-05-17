@@ -3,105 +3,385 @@
 
 <head>
     <meta charset="UTF-8">
-
     <title>Създай игра - Game Forge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
 
-    <!-- YOUR STYLES -->
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body class="bg-dark text-light">
+<body>
 
-<!-- HEADER -->
-<header class="d-flex justify-content-between align-items-center p-3 bg-black bg-opacity-75 shadow-sm">
-
-    <!-- LEFT -->
-    <div class="logo-container d-flex align-items-center gap-2">
+<header>
+    <div class="logo-container">
         <img src="images/logo.png" class="logo">
-        <h1 class="bungee-regular m-0">Game Forge</h1>
+        <h1 class="bungee-regular">Game Forge</h1>
     </div>
 
-    <!-- RIGHT NAV -->
     <nav>
-        <ul class="nav">
-
-            <li class="nav-item">
-                <a class="nav-link text-light" href="index.html">Начало</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link text-light" href="about.html">За нас</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link text-light" href="contacts.html">Контакти</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link active text-warning fw-bold" href="bootstrap.html">
-                    Създай игра
-                </a>
-            </li>
-
+        <ul>
+            <li><a href="index.html">Начало</a></li>
+            <li><a href="tailwind.html">Готови модели</a></li>
+            <li><a href="bootstrap.html" class="active">Създайте игра</a></li>
+            <li><a href="about.html">За нас</a></li>
+            <li><a href="contacts.html">Контакти</a></li>
         </ul>
     </nav>
 
+    <div class="cart-container">
+        <a href="login.html" class="auth-btn">Вход</a>
+        <a href="register.html" class="auth-btn">Регистрация</a>
+        <button id="cart-button" class="cart-button">
+            <img src="images/icon_basket.gif" class="cart-icon" alt="Cart">
+            <span class="cart-text">Кошница</span>
+            (<span id="cart-count">0</span>)
+        </button>
+    </div>
 </header>
 
 <!-- MAIN -->
-<main class="container my-5">
+<main style="background: #0b0b12; min-height: 100vh; padding: 40px 20px;">
 
-    <h2 class="text-center mb-3 text-warning">
-        Създай своя настолна игра
-    </h2>
+    <div style="max-width: 1000px; margin: 0 auto;">
+        <h2 style="font-size: 40px; text-align: center; margin-bottom: 10px; color: #fff; text-shadow: 0 0 10px #8c52ff; font-family: 'Bungee', cursive;">
+            Създай своя настолна игра
+        </h2>
 
-    <p class="text-center mb-5 text-secondary">
-        Избери стил, тема и компоненти
-    </p>
+        <p style="text-align: center; color: #aaa; margin-bottom: 40px; font-size: 16px;">
+            Избери стил, тема, цветове и компоненти - направи твоята уникална игра!
+        </p>
 
-    <!-- FORM -->
-    <form class="row g-3 p-4 bg-black bg-opacity-50 rounded shadow-lg border border-secondary">
+        <!-- BUILDER FORM -->
+        <form id="game-builder-form" class="builder-form">
 
-        <div class="col-md-6">
-            <label class="form-label">Име на играта</label>
-            <input type="text" class="form-control" placeholder="Въведи име">
-        </div>
+            <!-- SECTION 1: BASIC INFO -->
+            <div class="form-section">
+                <h4>📝 Основна информация</h4>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="game-name">Име на играта *</label>
+                        <input type="text" id="game-name" name="name" required placeholder="Въведи привлекателно име">
+                    </div>
 
-        <div class="col-md-6">
-            <label class="form-label">Брой играчи</label>
-            <input type="number" class="form-control" placeholder="1-6">
-        </div>
+                    <div class="form-group">
+                        <label for="game-players">Брой играчи *</label>
+                        <select id="game-players" name="players" required>
+                            <option value="">Избери брой</option>
+                            <option value="2">2 играча</option>
+                            <option value="3-4">3-4 играча</option>
+                            <option value="5-6">5-6 играча</option>
+                            <option value="7+">7+ играча</option>
+                        </select>
+                    </div>
+                </div>
 
-        <div class="col-12">
-            <label class="form-label">Описание</label>
-            <textarea class="form-control" rows="4"></textarea>
-        </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="game-duration">Време на игра (минути) *</label>
+                        <input type="number" id="game-duration" name="duration" required placeholder="30" min="5" max="300">
+                    </div>
 
-        <div class="col-12 text-center">
-            <button type="submit" class="btn btn-warning px-4 py-2">
-                Създай игра
-            </button>
-        </div>
+                    <div class="form-group">
+                        <label for="game-difficulty">Сложност на правилата</label>
+                        <select id="game-difficulty" name="difficulty">
+                            <option value="easy">Лесна</option>
+                            <option value="medium" selected>Средна</option>
+                            <option value="hard">Трудна</option>
+                        </select>
+                    </div>
+                </div>
 
-    </form>
+                <div class="form-row">
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="game-description">Описание на играта</label>
+                        <textarea id="game-description" name="description" placeholder="Опиши главната идея, правилата и как се печели..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: GAME TYPE & OCCASION -->
+            <div class="form-section">
+                <h4>🎮 Тип игра и повод</h4>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Тип игра *</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="radio" id="type-cards" name="game-type" value="cards">
+                                <label for="type-cards">Карти</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" id="type-board" name="game-type" value="board">
+                                <label for="type-board">Настолна</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" id="type-dice" name="game-type" value="dice">
+                                <label for="type-dice">Със зарове</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="radio" id="type-hybrid" name="game-type" value="hybrid" checked>
+                                <label for="type-hybrid">Хибридна</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Повод/Тема *</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="occasion-birthday" name="occasion" value="birthday">
+                                <label for="occasion-birthday">Рожден ден</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="occasion-gift" name="occasion" value="gift">
+                                <label for="occasion-gift">Подарък</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="occasion-event" name="occasion" value="event">
+                                <label for="occasion-event">Събитие/Партито</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="occasion-corporate" name="occasion" value="corporate">
+                                <label for="occasion-corporate">Корпоративно</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="occasion-family" name="occasion" value="family">
+                                <label for="occasion-family">Семейно</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="occasion-custom" name="occasion" value="custom">
+                                <label for="occasion-custom">Пользованско</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: THEME & DESIGN -->
+            <div class="form-section">
+                <h4>🎨 Дизайн и тема</h4>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Тема *</label>
+                        <select name="theme" required>
+                            <option value="">Избери тема</option>
+                            <option value="fantasy">Фантазия</option>
+                            <option value="scifi">Научна фантастика</option>
+                            <option value="historical">Историческа</option>
+                            <option value="adventure">Приключения</option>
+                            <option value="mystery">Мистерия</option>
+                            <option value="horror">Ужас</option>
+                            <option value="comedy">Комедия</option>
+                            <option value="abstract">Абстрактна</option>
+                            <option value="custom">Своя тема</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Цветова гама *</label>
+                        <select name="colors" required>
+                            <option value="">Избери цветове</option>
+                            <option value="dark">Тъмна (Черно, лилаво, сиво)</option>
+                            <option value="bright">Ярка (Жълто, оранжево, розово)</option>
+                            <option value="nature">Природна (Зелено, кафяво, син)</option>
+                            <option value="gold">Благородна (Златисто, черно, бяло)</option>
+                            <option value="rainbow">Радужна (Всички цветове)</option>
+                            <option value="custom">Своя избор</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="custom-colors">Собствени цветове (опционално)</label>
+                        <input type="text" id="custom-colors" name="custom-colors" placeholder="Напр. блус, зелено, черно...">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="template">Шаблон/Стил</label>
+                        <select id="template" name="template">
+                            <option value="">Без предустановка</option>
+                            <option value="classic">Класически</option>
+                            <option value="modern">Модерен</option>
+                            <option value="vintage">Винтидж</option>
+                            <option value="minimalist">Минималистичен</option>
+                            <option value="artistic">Художествен</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 4: COMPONENTS -->
+            <div class="form-section">
+                <h4>🧩 Компоненти и съдържание</h4>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Включени компоненти *</label>
+                        <div class="checkbox-group" style="grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="comp-cards" name="components" value="cards" checked>
+                                <label for="comp-cards">Карти</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="comp-board" name="components" value="board">
+                                <label for="comp-board">Дъска</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="comp-dice" name="components" value="dice">
+                                <label for="comp-dice">Зарове</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="comp-tokens" name="components" value="tokens">
+                                <label for="comp-tokens">Жетони</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="comp-figures" name="components" value="figures">
+                                <label for="comp-figures">Фигурки</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="comp-manual" name="components" value="manual" checked>
+                                <label for="comp-manual">Наръчник</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label for="game-content">Какво ще се случва в играта?</label>
+                        <textarea id="game-content" name="game-content" placeholder="Опиши механиката, главните действия, целите, начина на печелене..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 5: IMAGES -->
+            <div class="form-section">
+                <h4>🖼️ Снимки и графика</h4>
+                
+                <div class="form-row" style="grid-column: 1 / -1;">
+                    <div class="form-group">
+                        <label>Прикачи снимки на картите/съдържанието (опционално)</label>
+                        <div class="file-upload" onclick="document.getElementById('file-input').click()">
+                            <input type="file" id="file-input" name="images" multiple accept="image/*">
+                            <p>📤 Кликни тук или влачи снимки (PNG, JPG, GIF)</p>
+                            <p style="font-size: 11px; color: #777;">Максимум 5MB на файл, до 10 файла</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 6: ACTIONS -->
+            <div class="form-actions">
+                <button type="submit" class="btn btn-submit" onclick="submitGameBuilder(event)">
+                    ✅ Създай моята игра
+                </button>
+                <button type="button" class="btn btn-contact" onclick="openContactModal()">
+                    📞 Свържи се с служител
+                </button>
+                <button type="reset" class="btn btn-reset">
+                    🔄 Изчисти формата
+                </button>
+            </div>
+
+        </form>
+
+    </div>
 
 </main>
 
-<footer class="text-center py-3 border-top border-secondary">
-    &copy; 2026 Game Forge
+<!-- CONTACT MODAL -->
+<div id="contact-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Свържи се с нас</h2>
+            <button type="button" class="close-modal" onclick="closeContactModal()">✕</button>
+        </div>
+        
+        <form class="contact-form-modal" onsubmit="submitContact(event)">
+            <div class="form-group">
+                <label for="contact-name">Твоето име</label>
+                <input type="text" id="contact-name" required placeholder="Име Фамилия">
+            </div>
+
+            <div class="form-group">
+                <label for="contact-phone">Телефонен номер</label>
+                <input type="tel" id="contact-phone" required placeholder="+359 ...">
+            </div>
+
+            <div class="form-group">
+                <label for="contact-email">Имейл</label>
+                <input type="email" id="contact-email" required placeholder="твой@имейл.com">
+            </div>
+
+            <div class="form-group">
+                <label for="contact-message">Съобщение</label>
+                <textarea id="contact-message" required placeholder="Напиши какво искаш да обсъдиш..." style="min-height: 80px;"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-submit" style="width: 100%;">
+                Изпрати запит
+            </button>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Game Forge. All rights reserved.</p>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="js/script.js"></script>
+
+<script>
+    function openContactModal() {
+        document.getElementById('contact-modal').classList.add('show');
+    }
+
+    function closeContactModal() {
+        document.getElementById('contact-modal').classList.remove('show');
+    }
+
+    function submitGameBuilder(e) {
+        e.preventDefault();
+        
+        const gameName = document.getElementById('game-name').value;
+        if (gameName) {
+            alert(`✅ Игра "${gameName}" е успешно създадена!\nСкоро ще получиш имейл с детайли.`);
+            document.getElementById('game-builder-form').reset();
+        }
+    }
+
+    function submitContact(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('contact-name').value;
+        const phone = document.getElementById('contact-phone').value;
+        const email = document.getElementById('contact-email').value;
+        
+        alert(`✅ Запитът ти е получен!\nСлужител ще се свърже с теб на ${phone} или ${email}`);
+        closeContactModal();
+        document.querySelector('.contact-form-modal').reset();
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('contact-modal');
+        if (event.target == modal) {
+            closeContactModal();
+        }
+    }
+</script>
 
 </body>
 </html>
